@@ -1,5 +1,6 @@
 /* ─────────────────────────────────────────────────────────
    CHRISTAIN- · Issue 001  ·  main.js
+   MagazineFlip — 10-page book with GSAP transitions
    ───────────────────────────────────────────────────────── */
 
 /* ── SUPABASE CONFIG ──────────────────────────────────────── */
@@ -28,6 +29,217 @@ function countUp(el, target, suffix, duration = 1800) {
   })(start);
 }
 
+/* ── MAGAZINE FLIP CLASS ──────────────────────────────────── */
+class MagazineFlip {
+  constructor() {
+    this.pages = Array.from(document.querySelectorAll('.mag-page'));
+    this.total = this.pages.length;
+    this.current = 0;
+    this.animating = false;
+
+    this.btnPrev = document.getElementById('btnPrev');
+    this.btnNext = document.getElementById('btnNext');
+    this.dots = Array.from(document.querySelectorAll('.dot-nav__dot'));
+    this.counter = document.getElementById('pageCounter');
+
+    this._init();
+  }
+
+  _init() {
+    // Set up initial state — show first page
+    this.pages.forEach((p, i) => {
+      p.classList.remove('is-active', 'is-prev');
+      if (i === 0) p.classList.add('is-active');
+    });
+
+    this._updateUI();
+    this._bindEvents();
+    this.onPageEnter(0);
+  }
+
+  _bindEvents() {
+    // Prev / next buttons
+    this.btnPrev.addEventListener('click', () => this.go(this.current - 1));
+    this.btnNext.addEventListener('click', () => this.go(this.current + 1));
+
+    // Dot nav
+    this.dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const target = parseInt(dot.getAttribute('data-goto'), 10);
+        this.go(target);
+      });
+    });
+
+    // Nav links with data-page-link
+    document.querySelectorAll('[data-page-link]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        const idx = parseInt(el.getAttribute('data-page-link'), 10);
+        this.go(idx);
+      });
+    });
+
+    // Logo goto=0
+    document.querySelectorAll('[data-goto]').forEach(el => {
+      if (el.tagName === 'BUTTON') return; // dots handled above
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        const idx = parseInt(el.getAttribute('data-goto'), 10);
+        this.go(idx);
+      });
+    });
+
+    // Keyboard arrow keys
+    document.addEventListener('keydown', e => {
+      if (document.getElementById('navOverlay').classList.contains('open')) return;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault(); this.go(this.current + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault(); this.go(this.current - 1);
+      }
+    });
+
+    // Swipe support
+    let touchStartX = 0, touchStartY = 0;
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    document.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      // Only trigger horizontal swipe if horizontal movement dominates
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        if (dx < 0) this.go(this.current + 1);
+        else this.go(this.current - 1);
+      }
+    }, { passive: true });
+  }
+
+  go(index) {
+    if (this.animating) return;
+    if (index < 0 || index >= this.total) return;
+    if (index === this.current) return;
+
+    this.animating = true;
+    const prev = this.current;
+    const next = index;
+    const dir = next > prev ? 1 : -1;
+
+    const prevPage = this.pages[prev];
+    const nextPage = this.pages[next];
+
+    // Scroll next page to top before showing
+    nextPage.scrollTop = 0;
+
+    // Set up next page: start slightly offset
+    gsap.set(nextPage, {
+      opacity: 0,
+      x: dir > 0 ? '6%' : '-6%',
+      rotateY: dir > 0 ? 8 : -8,
+      transformPerspective: 1400,
+      transformOrigin: dir > 0 ? 'left center' : 'right center',
+    });
+    nextPage.classList.add('is-active');
+    nextPage.style.pointerEvents = 'none';
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        prevPage.classList.remove('is-active', 'is-prev');
+        nextPage.style.pointerEvents = '';
+        gsap.set(nextPage, { clearProps: 'all' });
+        this.current = next;
+        this.animating = false;
+        this._updateUI();
+        this.onPageEnter(next);
+      }
+    });
+
+    // Animate prev page out
+    tl.to(prevPage, {
+      opacity: 0,
+      x: dir > 0 ? '-4%' : '4%',
+      rotateY: dir > 0 ? -6 : 6,
+      duration: 0.45,
+      ease: 'power2.in',
+      transformPerspective: 1400,
+      transformOrigin: dir > 0 ? 'right center' : 'left center',
+    }, 0);
+
+    // Animate next page in
+    tl.to(nextPage, {
+      opacity: 1,
+      x: '0%',
+      rotateY: 0,
+      duration: 0.55,
+      ease: 'power3.out',
+    }, 0.15);
+
+    prevPage.classList.add('is-prev');
+  }
+
+  _updateUI() {
+    // Counter
+    if (this.counter) {
+      const n = String(this.current + 1).padStart(2, '0');
+      const t = String(this.total).padStart(2, '0');
+      this.counter.textContent = `${n} / ${t}`;
+    }
+
+    // Dots
+    this.dots.forEach((d, i) => {
+      d.classList.toggle('active', i === this.current);
+    });
+
+    // Arrows
+    if (this.btnPrev) this.btnPrev.classList.toggle('hidden', this.current === 0);
+    if (this.btnNext) this.btnNext.classList.toggle('hidden', this.current === this.total - 1);
+  }
+
+  onPageEnter(index) {
+    const page = this.pages[index];
+    if (!page) return;
+
+    // Animate counter cards on stats/audience pages
+    const cards = page.querySelectorAll('.gsap-counter-card');
+    if (cards.length) {
+      gsap.fromTo(cards,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.55, stagger: 0.07, ease: 'power3.out',
+          delay: 0.2,
+          onStart: () => initCounters(cards)
+        }
+      );
+    }
+
+    // Animate progress bars on audience pages
+    const bars = page.querySelectorAll('.bar-fill');
+    bars.forEach(bar => {
+      const width = parseFloat(bar.getAttribute('data-width'));
+      if (!isNaN(width)) {
+        setTimeout(() => { bar.style.width = width + '%'; }, 350);
+      }
+    });
+
+    // Social phone + text entrance (p-social page)
+    if (page.id === 'p4') {
+      const phone = page.querySelector('.social-phone-frame');
+      const text  = page.querySelector('.social-editorial-text');
+      if (phone) gsap.fromTo(phone, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.15 });
+      if (text)  gsap.fromTo(text,  { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out', delay: 0.3 });
+    }
+
+    // Annotations subtle entrance
+    const annotations = page.querySelectorAll('.annotation');
+    if (annotations.length) {
+      gsap.fromTo(annotations,
+        { opacity: 0, x: 15 },
+        { opacity: 0.85, x: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out', delay: 0.4 }
+      );
+    }
+  }
+}
+
 /* ── SUPABASE STATS FETCH ─────────────────────────────────── */
 async function fetchLiveStats() {
   try {
@@ -53,23 +265,18 @@ async function fetchLiveStats() {
   } catch (_) { /* silent — fallback to hardcoded values */ }
 }
 
-/* ── NAV ──────────────────────────────────────────────────── */
+/* ── NAV (hamburger only, no scroll listener) ─────────────── */
 function initNav() {
-  const nav = document.getElementById('nav');
   const hamburger = document.getElementById('hamburger');
   const navOverlay = document.getElementById('navOverlay');
   const navClose = document.getElementById('navClose');
   const overlayLinks = document.querySelectorAll('.overlay-link');
 
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
-
   function openNav() {
     navOverlay.classList.add('open');
     navOverlay.setAttribute('aria-hidden', 'false');
     hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = '';
   }
   function closeNav() {
     navOverlay.classList.remove('open');
@@ -111,7 +318,7 @@ function initMasthead() {
 
 /* ── BARCODE GENERATORS ───────────────────────────────────── */
 function initBarcodes() {
-  ['bmagBarcode1', 'bmagBarcode2', 'bmagBarcode3'].forEach(id => {
+  ['bmagBarcode1', 'bmagBarcode2', 'contactBarcode'].forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
     for (let i = 0; i < 36; i++) {
@@ -121,66 +328,6 @@ function initBarcodes() {
       span.style.cssText = `width:${w}px;height:${h}px`;
       el.appendChild(span);
     }
-  });
-}
-
-/* ── MAGAZINE PAGE-FLIP ENTRANCE ──────────────────────────── */
-function initPageFlip() {
-  const sections = document.querySelectorAll('.section-flip');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.intersectionRatio > 0.04) {
-        entry.target.classList.add('page-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: [0, 0.04, 0.1] });
-
-  sections.forEach(s => observer.observe(s));
-}
-
-/* ── SCROLL ANIMATIONS (counters + brand photo reveals only) ─ */
-function initScrollAnims() {
-  gsap.utils.toArray('.stats-grid').forEach(grid => {
-    const cards = grid.querySelectorAll('.gsap-counter-card');
-    gsap.to(cards, {
-      opacity: 1, y: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out',
-      scrollTrigger: {
-        trigger: grid, start: 'top 78%', once: true,
-        onEnter: () => initCounters(cards),
-      }
-    });
-  });
-
-  document.querySelectorAll('.brand-photo-reveal').forEach(el => {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    observer.observe(el);
-  });
-
-  gsap.utils.toArray('.videos-grid').forEach(grid => {
-    const cards = grid.querySelectorAll('.video-card');
-    cards.forEach(c => { c.style.opacity = '0'; c.style.transform = 'translateY(20px)'; });
-    gsap.to(cards, {
-      opacity: 1, y: 0, duration: 0.6, stagger: 0.06, ease: 'power3.out',
-      scrollTrigger: { trigger: grid, start: 'top 80%', once: true }
-    });
-  });
-
-  gsap.utils.toArray('.annotation').forEach(el => {
-    gsap.fromTo(el,
-      { x: 20, opacity: 0 },
-      { x: 0, opacity: 0.85, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 90%', once: true }
-      }
-    );
   });
 }
 
@@ -195,73 +342,8 @@ function initCounters(cards) {
 
 /* ── PROGRESS BARS ────────────────────────────────────────── */
 function initProgressBars() {
-  document.querySelectorAll('.bar-fill').forEach(bar => {
-    const width = parseFloat(bar.getAttribute('data-width'));
-    if (isNaN(width)) return;
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => { bar.style.width = width + '%'; }, 100);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    observer.observe(bar);
-  });
-}
-
-/* ── TRADING CARD 3D TILT ─────────────────────────────────── */
-function initTradingCards() {
-  document.querySelectorAll('.trade-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
-      const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-      gsap.to(card, { rotateY: dx * 12, rotateX: -dy * 8, duration: 0.15, ease: 'none', transformPerspective: 800 });
-    });
-    card.addEventListener('mouseleave', () => {
-      gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.8, ease: 'elastic.out(1, 0.5)', transformPerspective: 800 });
-    });
-  });
-}
-
-/* ── GRAIN TOGGLE FOR LIGHT CHAPTERS ─────────────────────── */
-function initGrainChapters() {
-  const lightSelectors = '[data-chapter="ch01"],[data-chapter="ch02"],[data-chapter="ch05"]';
-  document.querySelectorAll(lightSelectors).forEach(section => {
-    ScrollTrigger.create({
-      trigger: section,
-      start: 'top 60%',
-      end: 'bottom 40%',
-      onEnter:      () => document.body.classList.add('light-chapter'),
-      onLeave:      () => document.body.classList.remove('light-chapter'),
-      onEnterBack:  () => document.body.classList.add('light-chapter'),
-      onLeaveBack:  () => document.body.classList.remove('light-chapter'),
-    });
-  });
-}
-
-/* ── SOCIAL PROOF ENTRANCE ────────────────────────────────── */
-function initSocialProof() {
-  const section = document.getElementById('social-proof');
-  if (!section) return;
-
-  const phone = document.getElementById('socialPhone');
-  const text  = section.querySelector('.social-editorial-text');
-
-  if (phone) {
-    gsap.to(phone, {
-      opacity: 1, y: 0, duration: 1, ease: 'power3.out',
-      scrollTrigger: { trigger: section, start: 'top 70%', once: true }
-    });
-  }
-  if (text) {
-    gsap.to(text, {
-      opacity: 1, x: 0, duration: 1, ease: 'power3.out',
-      scrollTrigger: { trigger: section, start: 'top 70%', once: true },
-      delay: 0.2,
-    });
-  }
+  // Progress bars are now triggered via onPageEnter in MagazineFlip
+  // This is a no-op placeholder retained for compatibility
 }
 
 /* ── LANGUAGE TOGGLE (EN / ES) ────────────────────────────── */
@@ -291,15 +373,18 @@ function initLangToggle() {
 document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
 
+  // Set social phone/text opacity:0 before MagazineFlip initialises
+  const socialPhone = document.getElementById('socialPhone');
+  const socialText  = document.getElementById('socialText');
+  if (socialPhone) socialPhone.style.opacity = '0';
+  if (socialText)  socialText.style.opacity  = '0';
+
   initNav();
   initMasthead();
   initBarcodes();
-  initScrollAnims();
   initProgressBars();
-  initTradingCards();
-  initGrainChapters();
-  initSocialProof();
-  initPageFlip();
   initLangToggle();
   fetchLiveStats();
+
+  new MagazineFlip();
 });
