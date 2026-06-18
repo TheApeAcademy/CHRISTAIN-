@@ -132,12 +132,13 @@ class MagazineFlip {
     // Scroll next page to top before showing
     nextPage.scrollTop = 0;
 
-    // Set up next page: start slightly offset
+    // Set up next page: start as if opening from the spine
     gsap.set(nextPage, {
       opacity: 0,
-      x: dir > 0 ? '6%' : '-6%',
-      rotateY: dir > 0 ? 8 : -8,
-      transformPerspective: 1400,
+      x: dir > 0 ? '14%' : '-14%',
+      rotateY: dir > 0 ? 20 : -20,
+      scale: 0.95,
+      transformPerspective: 1000,
       transformOrigin: dir > 0 ? 'left center' : 'right center',
     });
     nextPage.classList.add('is-active');
@@ -155,25 +156,27 @@ class MagazineFlip {
       }
     });
 
-    // Animate prev page out
+    // Animate prev page out — fold back like a turning page
     tl.to(prevPage, {
       opacity: 0,
-      x: dir > 0 ? '-4%' : '4%',
-      rotateY: dir > 0 ? -6 : 6,
-      duration: 0.45,
+      x: dir > 0 ? '-10%' : '10%',
+      rotateY: dir > 0 ? -16 : 16,
+      scale: 0.96,
+      duration: 0.52,
       ease: 'power2.in',
-      transformPerspective: 1400,
+      transformPerspective: 1000,
       transformOrigin: dir > 0 ? 'right center' : 'left center',
     }, 0);
 
-    // Animate next page in
+    // Animate next page in — swing into flat position
     tl.to(nextPage, {
       opacity: 1,
       x: '0%',
       rotateY: 0,
-      duration: 0.55,
+      scale: 1,
+      duration: 0.62,
       ease: 'power3.out',
-    }, 0.15);
+    }, 0.1);
 
     prevPage.classList.add('is-prev');
   }
@@ -225,8 +228,42 @@ class MagazineFlip {
     if (page.id === 'p4') {
       const phone = page.querySelector('.social-phone-frame');
       const text  = page.querySelector('.social-editorial-text');
-      if (phone) gsap.fromTo(phone, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.15 });
-      if (text)  gsap.fromTo(text,  { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out', delay: 0.3 });
+      if (phone) gsap.fromTo(phone, { opacity: 0, y: 60, rotateZ: -3 }, { opacity: 1, y: 0, rotateZ: 0, duration: 1.0, ease: 'power3.out', delay: 0.15 });
+      if (text)  gsap.fromTo(text,  { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out', delay: 0.35 });
+    }
+
+    // Who page: pop the bg text and portrait in
+    if (page.id === 'p3') {
+      const name = page.querySelector('.who-name');
+      const bio  = page.querySelector('.who-bio');
+      if (name) gsap.fromTo(name, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.2 });
+      if (bio)  gsap.fromTo(bio,  { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 0.4 });
+    }
+
+    // Cover: re-run masthead on return to page 1
+    if (page.id === 'p1' && index > 0) {
+      gsap.fromTo(['#mLine1','#mLine2','#mLine3','#mLine4'],
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.08, delay: 0.1 }
+      );
+    }
+
+    // Times/Stats: pop the header
+    if (page.id === 'p5') {
+      const header = page.querySelector('.times-header');
+      if (header) gsap.fromTo(header, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 0.1 });
+    }
+
+    // Numero page: title slam
+    if (page.id === 'p7') {
+      const title = page.querySelector('.numero-title');
+      if (title) gsap.fromTo(title, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.85, ease: 'power3.out', delay: 0.15 });
+    }
+
+    // Contact page: title slam
+    if (page.id === 'p10') {
+      const feat = page.querySelector('.vogue-feature');
+      if (feat) gsap.fromTo(feat, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out', delay: 0.2 });
     }
 
     // Annotations subtle entrance
@@ -369,6 +406,21 @@ function initLangToggle() {
   });
 }
 
+/* ── BRAND CARD 3D HOVER ──────────────────────────────────── */
+function initBrandHover() {
+  document.querySelectorAll('.bmag-photo-wrap, .bmag-callout-item--feature').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - 0.5;
+      const y = (e.clientY - r.top)  / r.height - 0.5;
+      gsap.to(card, { rotateY: x * 10, rotateX: -y * 8, transformPerspective: 800, ease: 'power1.out', duration: 0.3 });
+    });
+    card.addEventListener('mouseleave', () => {
+      gsap.to(card, { rotateY: 0, rotateX: 0, ease: 'elastic.out(1,0.5)', duration: 0.9 });
+    });
+  });
+}
+
 /* ── INIT ─────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -384,6 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBarcodes();
   initProgressBars();
   initLangToggle();
+  initBrandHover();
   fetchLiveStats();
 
   new MagazineFlip();
