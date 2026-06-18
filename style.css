@@ -235,19 +235,31 @@ body.light-chapter .grain { opacity: 0.012; }
 }
 .masthead-inner { display: flex; flex-direction: column; gap: 1.5rem; position: relative; z-index: 2; }
 
+/* CSS fallback: masthead elements fade in via keyframes so they always show,
+   even before GSAP runs. GSAP overrides inline-style opacity after it loads. */
+@keyframes mastheadIn     { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+@keyframes mastheadFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
 .masthead-issue-line {
   font-family: var(--font-mono); font-size: clamp(0.55rem, 1.2vw, 0.72rem);
   letter-spacing: 0.3em; text-transform: uppercase;
   color: rgba(245,240,232,0.35); opacity: 0;
+  animation: mastheadFadeIn 0.8s ease forwards 0.2s;
 }
-.film-barcode { display: flex; align-items: flex-end; gap: 2px; height: 28px; opacity: 0; }
+.film-barcode { display: flex; align-items: flex-end; gap: 2px; height: 28px; opacity: 0;
+  animation: mastheadFadeIn 0.5s ease forwards 0.6s; }
 .film-barcode span { display: block; background: rgba(245,240,232,0.2); border-radius: 1px; flex-shrink: 0; }
 
 .masthead-title-block { display: flex; flex-direction: column; line-height: 0.88; margin: 0.5rem 0; }
 .masthead-line {
   font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.02em;
   opacity: 0; transform: translateY(40px); display: block;
+  animation: mastheadIn 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
 }
+#mLine1 { animation-delay: 0.4s; }
+#mLine2 { animation-delay: 0.55s; }
+#mLine3 { animation-delay: 0.7s; }
+#mLine4 { animation-delay: 0.8s; }
 .masthead-line--sm   { font-size: clamp(2rem, 5vw, 5rem);    color: rgba(245,240,232,0.4); }
 .masthead-line--xl   { font-size: clamp(4.5rem, 14vw, 14rem); color: #f5f0e8; }
 .masthead-line--md   { font-size: clamp(2.5rem, 7vw, 7rem);  color: rgba(245,240,232,0.8); }
@@ -258,10 +270,13 @@ body.light-chapter .grain { opacity: 0.012; }
   font-family: var(--font-mono); font-size: clamp(0.6rem, 1.4vw, 0.8rem);
   letter-spacing: 0.15em; text-transform: uppercase;
   color: rgba(245,240,232,0.45); opacity: 0;
+  animation: mastheadFadeIn 0.6s ease forwards 1s;
 }
 .meta-dot { color: var(--ch-accent); }
-.hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; opacity: 0; }
-.hero-tags  { display: flex; flex-wrap: wrap; gap: 0.5rem; opacity: 0; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; opacity: 0;
+  animation: mastheadFadeIn 0.5s ease forwards 1.2s; }
+.hero-tags  { display: flex; flex-wrap: wrap; gap: 0.5rem; opacity: 0;
+  animation: mastheadFadeIn 0.5s ease forwards 1.35s; }
 
 .scroll-cue {
   position: absolute; bottom: 2.5rem; right: 3rem;
@@ -763,14 +778,18 @@ blockquote { text-align: center; font-family: var(--font-serif); font-style: ita
 .footer-socials a:hover { color: #f5f0e8; }
 
 /* ── 21. PAGE FLIP ENTRANCE ───────────────────────────── */
-section:not(#hero) {
+/* Using a class avoids specificity clash with section:not(#hero) IDs */
+.section-flip {
   opacity: 0;
   transform: perspective(1600px) rotateY(-22deg) translateX(3%);
   transform-origin: right center;
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
-section.page-visible { opacity: 1; transform: perspective(1600px) rotateY(0deg) translateX(0); }
+.section-flip.page-visible {
+  opacity: 1;
+  transform: perspective(1600px) rotateY(0deg) translateX(0);
+}
 /* Non-section elements that scroll into view don't flip */
 .section-marquee { opacity: 1 !important; transform: none !important; }
 
@@ -780,6 +799,6 @@ section.page-visible { opacity: 1; transform: perspective(1600px) rotateY(0deg) 
   .grain { display: none; }
   .masthead-line { opacity: 1 !important; transform: none !important; }
   .social-phone-frame, .social-editorial-text { opacity: 1 !important; transform: none !important; }
-  section:not(#hero) { opacity: 1 !important; transform: none !important; }
+  .section-flip { opacity: 1 !important; transform: none !important; }
   .gsap-counter-card { opacity: 1 !important; transform: none !important; }
 }

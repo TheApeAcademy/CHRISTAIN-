@@ -126,7 +126,7 @@ function initBarcodes() {
 
 /* ── MAGAZINE PAGE-FLIP ENTRANCE ──────────────────────────── */
 function initPageFlip() {
-  const sections = document.querySelectorAll('section:not(#hero)');
+  const sections = document.querySelectorAll('.section-flip');
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
