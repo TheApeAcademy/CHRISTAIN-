@@ -109,53 +109,39 @@ function initMasthead() {
     .to('#heroTags',     { opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.15');
 }
 
-/* ── PHOTO STACK ──────────────────────────────────────────── */
-function initPhotoStack() {
-  const pin = document.getElementById('stackPin');
-  if (!pin) return;
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '#photo-stack',
-      start: 'top top',
-      end: '+=250%',
-      pin: true,
-      scrub: 1.2,
-      anticipatePin: 1,
+/* ── BARCODE GENERATORS ───────────────────────────────────── */
+function initBarcodes() {
+  ['bmagBarcode1', 'bmagBarcode2', 'bmagBarcode3'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    for (let i = 0; i < 36; i++) {
+      const span = document.createElement('span');
+      const w = Math.random() > 0.55 ? 3 : (Math.random() > 0.5 ? 2 : 1);
+      const h = 10 + Math.random() * 14;
+      span.style.cssText = `width:${w}px;height:${h}px`;
+      el.appendChild(span);
     }
   });
-
-  tl.to('#sc1', { x: '-260px', rotation: -14, scale: 0.84, opacity: 0.85, duration: 1 }, 0)
-    .to('#sc2', { x: '-130px', rotation: -6,  scale: 0.92, opacity: 0.9,  duration: 1 }, 0)
-    .to('#sc3', { x: 0,        rotation: 1,   scale: 1.02,                 duration: 1 }, 0)
-    .to('#sc4', { x: '130px',  rotation: 7,   scale: 0.91, opacity: 0.9,  duration: 1 }, 0)
-    .to('#sc5', { x: '260px',  rotation: 13,  scale: 0.84, opacity: 0.85, duration: 1 }, 0)
-    .to('#stackLabel', { opacity: 1, y: 0, duration: 0.5 }, 0.3);
 }
 
-/* ── SCROLL ANIMATIONS ────────────────────────────────────── */
+/* ── MAGAZINE PAGE-FLIP ENTRANCE ──────────────────────────── */
+function initPageFlip() {
+  const sections = document.querySelectorAll('section:not(#hero)');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio > 0.04) {
+        entry.target.classList.add('page-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: [0, 0.04, 0.1] });
+
+  sections.forEach(s => observer.observe(s));
+}
+
+/* ── SCROLL ANIMATIONS (counters + brand photo reveals only) ─ */
 function initScrollAnims() {
-  gsap.utils.toArray('.gsap-fade-up').forEach(el => {
-    gsap.to(el, {
-      opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 84%', once: true }
-    });
-  });
-
-  gsap.utils.toArray('.gsap-slide-left').forEach(el => {
-    gsap.to(el, {
-      opacity: 1, x: 0, duration: 1, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 82%', once: true }
-    });
-  });
-
-  gsap.utils.toArray('.gsap-slide-right').forEach(el => {
-    gsap.to(el, {
-      opacity: 1, x: 0, duration: 1, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 82%', once: true }
-    });
-  });
-
   gsap.utils.toArray('.stats-grid').forEach(grid => {
     const cards = grid.querySelectorAll('.gsap-counter-card');
     gsap.to(cards, {
@@ -170,7 +156,10 @@ function initScrollAnims() {
   document.querySelectorAll('.brand-photo-reveal').forEach(el => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
       });
     }, { threshold: 0.2 });
     observer.observe(el);
@@ -185,7 +174,6 @@ function initScrollAnims() {
     });
   });
 
-  // Annotation wriggle-in
   gsap.utils.toArray('.annotation').forEach(el => {
     gsap.fromTo(el,
       { x: 20, opacity: 0 },
@@ -253,25 +241,6 @@ function initGrainChapters() {
   });
 }
 
-/* ── PAGE FLIPS ───────────────────────────────────────────── */
-function initPageFlips() {
-  gsap.to('#hero', {
-    rotateY: -180,
-    transformOrigin: 'left center',
-    transformPerspective: 1400,
-    ease: 'none',
-    scrollTrigger: { trigger: '#about', start: 'top bottom', end: 'top 30%', scrub: 1 }
-  });
-
-  gsap.to('#stats', {
-    rotateY: -180,
-    transformOrigin: 'left center',
-    transformPerspective: 1400,
-    ease: 'none',
-    scrollTrigger: { trigger: '#brands', start: 'top bottom', end: 'top 30%', scrub: 1 }
-  });
-}
-
 /* ── SOCIAL PROOF ENTRANCE ────────────────────────────────── */
 function initSocialProof() {
   const section = document.getElementById('social-proof');
@@ -295,18 +264,42 @@ function initSocialProof() {
   }
 }
 
+/* ── LANGUAGE TOGGLE (EN / ES) ────────────────────────────── */
+function initLangToggle() {
+  const btn = document.getElementById('langToggle');
+  if (!btn) return;
+
+  const els = document.querySelectorAll('[data-es]');
+  els.forEach(el => {
+    el.dataset.en = el.innerHTML;
+  });
+
+  let isES = false;
+
+  btn.addEventListener('click', () => {
+    isES = !isES;
+    btn.textContent = isES ? 'ES' : 'EN';
+    btn.classList.toggle('es-active', isES);
+
+    els.forEach(el => {
+      el.innerHTML = isES ? el.dataset.es : el.dataset.en;
+    });
+  });
+}
+
 /* ── INIT ─────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
 
   initNav();
   initMasthead();
-  initPhotoStack();
+  initBarcodes();
   initScrollAnims();
   initProgressBars();
   initTradingCards();
   initGrainChapters();
-  initPageFlips();
   initSocialProof();
+  initPageFlip();
+  initLangToggle();
   fetchLiveStats();
 });

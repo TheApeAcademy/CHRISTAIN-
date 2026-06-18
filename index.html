@@ -3,12 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CHRISTAIN- Issue 001 — Christian Prieto. Digital Creator. Fashion, Lifestyle & Travel. 35.7K TikTok · 9.6M Likes · 516K monthly views. Available for brand collaborations.">
-  <meta property="og:title" content="CHRISTAIN- · Issue 001 · Digital Creator">
-  <meta property="og:description" content="Fashion & Lifestyle creator based in Barcelona. 35.7K TikTok followers, 9.6M likes, 516K monthly views.">
-  <meta property="og:type" content="website">
+  <meta name="description" content="CHRISTAIN- Issue 001 — Christian Prieto. Digital Creator. Fashion, Lifestyle & Travel. 35.7K TikTok · 9.6M Likes · 516K monthly views.">
   <title>CHRISTAIN- · Issue 001</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400;600;700&family=Permanent+Marker&family=Righteous&family=VT323&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -17,31 +13,34 @@
 </head>
 <body>
 
-  <!-- ─── NAV ─────────────────────────────────────────────────── -->
+  <!-- ─── NAV ─────────────────────────────────────────────── -->
   <nav id="nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner container">
       <a href="#hero" class="nav-logo">
         <span class="masthead-logo-text">CHRISTAIN-</span>
       </a>
       <ul class="nav-links" role="list">
-        <li><a href="#stats">CH.02</a></li>
-        <li><a href="#brands">CH.03</a></li>
-        <li><a href="#formats">CH.04</a></li>
-        <li><a href="#contact" class="nav-cta">WORK WITH ME</a></li>
+        <li><a href="#stats" data-es="CAP.02">CH.02</a></li>
+        <li><a href="#brands" data-es="CAP.03">CH.03</a></li>
+        <li><a href="#formats" data-es="CAP.04">CH.04</a></li>
+        <li><a href="#contact" class="nav-cta" data-es="TRABAJA CONMIGO">WORK WITH ME</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav-right">
+        <button id="langToggle" class="lang-toggle" aria-label="Toggle language">EN</button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
     <div class="nav-overlay" id="navOverlay" aria-hidden="true">
       <button class="nav-close" id="navClose" aria-label="Close menu">✕</button>
       <ul role="list">
-        <li><a href="#hero" class="overlay-link">MASTHEAD</a></li>
-        <li><a href="#about" class="overlay-link">CH.01</a></li>
-        <li><a href="#stats" class="overlay-link">CH.02</a></li>
-        <li><a href="#brands" class="overlay-link">CH.03</a></li>
-        <li><a href="#formats" class="overlay-link">CH.04</a></li>
-        <li><a href="#contact" class="overlay-link">WORK WITH ME</a></li>
+        <li><a href="#hero" class="overlay-link" data-es="PORTADA">MASTHEAD</a></li>
+        <li><a href="#about" class="overlay-link" data-es="CAP.01">CH.01</a></li>
+        <li><a href="#stats" class="overlay-link" data-es="CAP.02">CH.02</a></li>
+        <li><a href="#brands" class="overlay-link" data-es="CAP.03">CH.03</a></li>
+        <li><a href="#formats" class="overlay-link" data-es="CAP.04">CH.04</a></li>
+        <li><a href="#contact" class="overlay-link" data-es="TRABAJA CONMIGO">WORK WITH ME</a></li>
       </ul>
       <div class="overlay-socials">
         <a href="https://tiktok.com/@chrtt.prieto" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a>
@@ -53,120 +52,81 @@
 
   <main>
 
-    <!-- ─── MASTHEAD ──────────────────────────────────────────── -->
-    <section id="hero" class="section-masthead page-flip-section chapter-snap-card" data-chapter="masthead">
-      <div class="container masthead-inner">
+    <!-- ─── MASTHEAD ──────────────────────────────────────── -->
+    <section id="hero" class="section-masthead" data-chapter="masthead">
+      <div class="masthead-photo-bg" aria-hidden="true">
+        <img src="assets/images/dressed-to-kill.jpg" alt="">
+      </div>
 
-        <div id="mastheadIssue" class="masthead-issue-line">
+      <div class="container masthead-inner">
+        <div id="mastheadIssue" class="masthead-issue-line"
+          data-es="NÚMERO 001 &nbsp;·&nbsp; JUNIO 2025 &nbsp;·&nbsp; CREADOR DIGITAL &nbsp;·&nbsp; BARCELONA, ESPAÑA">
           ISSUE 001 &nbsp;·&nbsp; JUNE 2025 &nbsp;·&nbsp; DIGITAL CREATOR &nbsp;·&nbsp; BARCELONA, SPAIN
         </div>
-
         <div id="mastheadBarcode" class="film-barcode" aria-hidden="true"></div>
-
         <div class="masthead-title-block">
           <span id="mLine1" class="masthead-line masthead-line--sm">DIGITAL</span>
           <span id="mLine2" class="masthead-line masthead-line--xl">CHRISTAIN</span>
           <span id="mLine3" class="masthead-line masthead-line--dash">—</span>
-          <span id="mLine4" class="masthead-line masthead-line--md">CREATOR</span>
+          <span id="mLine4" class="masthead-line masthead-line--md" data-es="CREADOR">CREATOR</span>
         </div>
-
-        <div id="mastheadMeta" class="masthead-meta-strip">
-          <span>35.7K TikTok</span>
-          <span class="meta-dot">·</span>
-          <span>9.6M Likes</span>
-          <span class="meta-dot">·</span>
-          <span>516K Views/mo</span>
-          <span class="meta-dot">·</span>
-          <span>@chrtt.prieto</span>
+        <div id="mastheadMeta" class="masthead-meta-strip"
+          data-es="35.7K TikTok &nbsp;·&nbsp; 9.6M Me Gusta &nbsp;·&nbsp; 516K Vistas/mes &nbsp;·&nbsp; @chrtt.prieto">
+          35.7K TikTok <span class="meta-dot">·</span> 9.6M Likes <span class="meta-dot">·</span> 516K Views/mo <span class="meta-dot">·</span> @chrtt.prieto
         </div>
-
         <div class="hero-ctas" id="heroCtas">
-          <a href="#about" class="btn-primary">Read the Issue</a>
-          <a href="#contact" class="btn-ghost">Work With Me</a>
+          <a href="#about" class="btn-primary" data-es="Leer el Número">Read the Issue</a>
+          <a href="#contact" class="btn-ghost" data-es="Trabajemos Juntos">Work With Me</a>
         </div>
-
         <div class="hero-tags" id="heroTags">
-          <span class="tag">Fashion</span>
-          <span class="tag">Lifestyle</span>
-          <span class="tag">Travel</span>
+          <span class="tag" data-es="Moda">Fashion</span>
+          <span class="tag" data-es="Estilo de Vida">Lifestyle</span>
+          <span class="tag" data-es="Viajes">Travel</span>
           <span class="tag">Streetwear</span>
         </div>
-
       </div>
 
       <div class="page-corner" aria-hidden="true">Issue 001 &nbsp;·&nbsp; p.01</div>
-
       <div class="scroll-cue" aria-hidden="true">
         <div class="scroll-line"></div>
         <span>scroll</span>
       </div>
     </section>
 
-    <!-- ─── PHOTO STACK ───────────────────────────────────────── -->
-    <section id="photo-stack" class="section-stack" data-chapter="masthead">
-      <div class="stack-pin" id="stackPin">
-        <div class="stack-canvas" id="stackCanvas">
-          <div class="stack-card polaroid" id="sc1" data-rotation="-8">
-            <div class="tape-strip" aria-hidden="true"></div>
-            <img src="assets/images/pink-stars.jpg" alt="Christian Prieto fashion content" loading="lazy">
-          </div>
-          <div class="stack-card polaroid" id="sc2" data-rotation="-3">
-            <div class="tape-strip" aria-hidden="true"></div>
-            <img src="assets/images/dressed-to-kill.jpg" alt="Christian Prieto streetwear" loading="lazy">
-          </div>
-          <div class="stack-card polaroid" id="sc3" data-rotation="0">
-            <div class="tape-strip" aria-hidden="true"></div>
-            <img src="assets/images/portrait-bw.jpg" alt="Christian Prieto editorial portrait" loading="lazy">
-          </div>
-          <div class="stack-card polaroid" id="sc4" data-rotation="4">
-            <div class="tape-strip" aria-hidden="true"></div>
-            <img src="assets/images/core-division-1.jpg" alt="Christian Prieto x Core Division" loading="lazy">
-          </div>
-          <div class="stack-card polaroid" id="sc5" data-rotation="9">
-            <div class="tape-strip" aria-hidden="true"></div>
-            <img src="assets/images/street-hoodie.jpg" alt="Christian Prieto urban fashion" loading="lazy">
-          </div>
-        </div>
-        <div class="stack-label" id="stackLabel">
-          <span class="stack-eyebrow">The Content</span>
-          <h2 class="stack-headline">Every Frame<br><em>Tells a Story</em></h2>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── ABOUT ─────────────────────────────────────────────── -->
+    <!-- ─── ABOUT ─────────────────────────────────────────── -->
     <section id="about" class="section-about" data-chapter="ch01">
-      <div class="chapter-divider chapter-snap-card">
-        <span class="chapter-num gsap-slide-left">01</span>
-        <span class="chapter-kicker gsap-fade-up">Profile &mdash; Barcelona, Spain</span>
-        <h2 class="chapter-title-lg gsap-fade-up">Who the Hell<br>Is He?</h2>
+      <div class="chapter-divider">
+        <span class="chapter-num">01</span>
+        <span class="chapter-kicker" data-es="Perfil — Barcelona, España">Profile &mdash; Barcelona, Spain</span>
+        <h2 class="chapter-title-lg" data-es="¿Quién Demonios Es Él?">Who the Hell<br>Is He?</h2>
       </div>
       <div class="container about-inner">
         <div class="about-img-col">
-          <div class="portrait-card gsap-slide-left">
+          <div class="portrait-card">
             <div class="tape-strip" aria-hidden="true"></div>
             <img src="assets/images/core-division-2.jpg" alt="Christian Prieto" loading="lazy">
-            <div class="portrait-badge">
-              <span>📍</span> Barcelona &nbsp;·&nbsp; Spain
-            </div>
+            <div class="portrait-badge">📍 Barcelona &nbsp;·&nbsp; Spain</div>
           </div>
         </div>
-        <div class="about-text-col gsap-slide-right">
-          <span class="section-eyebrow">Profile &mdash; Barcelona, Spain</span>
-          <h2 class="section-title">Marketing Mind.<br><em>Editorial Eye.</em></h2>
-          <p class="about-bio">Christian Prieto is a 24-year-old digital creator operating between Tarragona and Barcelona, Spain. With a background in international strategic marketing, he builds content at the intersection of fashion, urban lifestyle, and global travel — executed with the precision of a media brand and the intimacy of a personal story. <span class="annotation" style="--rot:-2deg">*genuinely though, go check the numbers.</span></p>
+        <div class="about-text-col">
+          <span class="section-eyebrow" data-es="Perfil — Barcelona, España">Profile &mdash; Barcelona, Spain</span>
+          <h2 class="section-title" data-es="Mente de Marketing.<br><em>Ojo Editorial.</em>">Marketing Mind.<br><em>Editorial Eye.</em></h2>
+          <p class="about-bio"
+            data-es="Christian Prieto es un creador digital de 24 años operando entre Tarragona y Barcelona, España. Con formación en marketing estratégico internacional, construye contenido en la intersección de la moda, el estilo de vida urbano y el viaje global — ejecutado con la precisión de una marca mediática y la intimidad de una historia personal. <span class='annotation' style='--rot:-2deg'>*en serio, comprueba los números.</span>">
+            Christian Prieto is a 24-year-old digital creator operating between Tarragona and Barcelona, Spain. With a background in international strategic marketing, he builds content at the intersection of fashion, urban lifestyle, and global travel — executed with the precision of a media brand and the intimacy of a personal story. <span class="annotation" style="--rot:-2deg">*genuinely though, go check the numbers.</span>
+          </p>
           <div class="about-facts">
             <div class="fact-row">
               <div class="fact-marker"></div>
-              <span>International strategic marketing background</span>
+              <span data-es="Formación en marketing estratégico internacional">International strategic marketing background</span>
             </div>
             <div class="fact-row">
               <div class="fact-marker"></div>
-              <span>Fashion, Lifestyle &amp; Travel content creator</span>
+              <span data-es="Creador de contenido: Moda, Lifestyle y Viajes">Fashion, Lifestyle &amp; Travel content creator</span>
             </div>
             <div class="fact-row">
               <div class="fact-marker"></div>
-              <span>Active audience 18–34 across LatAm &amp; Spain</span>
+              <span data-es="Audiencia activa 18–34 en LatAm y España">Active audience 18–34 across LatAm &amp; Spain</span>
             </div>
           </div>
           <div class="about-socials">
@@ -180,21 +140,21 @@
         </div>
       </div>
       <div class="container">
-        <div class="pull-quote gsap-fade-up">"Not just content — a media identity."</div>
+        <div class="pull-quote"
+          data-es='"No solo contenido — una identidad mediática."'>"Not just content — a media identity."</div>
       </div>
       <div class="page-corner" aria-hidden="true">Issue 001 &nbsp;·&nbsp; p.02</div>
     </section>
 
-    <!-- ─── SOCIAL PROOF ──────────────────────────────────────── -->
-    <section id="social-proof" class="section-social chapter-snap-card" data-chapter="masthead">
+    <!-- ─── SOCIAL PROOF ──────────────────────────────────── -->
+    <section id="social-proof" class="section-social" data-chapter="masthead">
       <div class="social-bg-blur" aria-hidden="true"></div>
-
       <div class="social-phone-frame" id="socialPhone">
         <div class="phone-notch" aria-hidden="true"></div>
         <div class="phone-screen">
           <div class="ig-profile-bar">
             <div class="ig-avatar">
-              <img src="assets/images/portrait-bw.jpg" alt="@chrtt.prieto profile photo">
+              <img src="assets/images/portrait-bw.jpg" alt="@chrtt.prieto">
             </div>
             <div class="ig-profile-info">
               <span class="ig-username">chrtt.prieto</span>
@@ -223,34 +183,31 @@
           </div>
         </div>
       </div>
-
-      <div class="social-editorial-text gsap-slide-right">
+      <div class="social-editorial-text" id="socialText">
         <span class="social-platform-tag">@chrtt.prieto &nbsp;·&nbsp; Instagram</span>
-        <h2 class="social-headline">12.9K<br><em>Followers.</em><br>516K<br><em>Monthly eyes.</em></h2>
-        <p class="social-caption">Before the numbers — there was the feed.</p>
-        <span class="annotation" style="--rot:3deg">yes, those are real numbers ↓</span>
+        <h2 class="social-headline">12.9K<br><em>Followers.</em><br>516K<br><em data-es="Ojos mensuales.">Monthly eyes.</em></h2>
+        <p class="social-caption" data-es="Antes de los números — estaba el feed.">Before the numbers — there was the feed.</p>
+        <span class="annotation" style="--rot:3deg" data-es="sí, esos números son reales ↓">yes, those are real numbers ↓</span>
       </div>
-
       <div class="social-grain" aria-hidden="true"></div>
     </section>
 
-    <!-- ─── STATS ─────────────────────────────────────────────── -->
-    <section id="stats" class="section-stats page-flip-section" data-chapter="ch02">
-      <div class="chapter-divider chapter-snap-card">
-        <span class="chapter-num gsap-slide-left">02</span>
-        <span class="chapter-kicker gsap-fade-up">Breaking Data</span>
-        <h2 class="chapter-title-lg gsap-fade-up">The Numbers</h2>
-        <p class="chapter-intro-line gsap-fade-up">The receipts. Every metric, live from the source.</p>
+    <!-- ─── STATS ─────────────────────────────────────────── -->
+    <section id="stats" class="section-stats" data-chapter="ch02">
+      <div class="chapter-divider">
+        <span class="chapter-num">02</span>
+        <span class="chapter-kicker" data-es="Datos Exclusivos">Breaking Data</span>
+        <h2 class="chapter-title-lg" data-es="Los Números">The Numbers</h2>
+        <p class="chapter-intro-line" data-es="Los recibos. Cada métrica, en vivo desde la fuente.">The receipts. Every metric, live from the source.</p>
       </div>
       <div class="container">
-        <div class="section-header gsap-fade-up">
-          <span class="section-eyebrow">Breaking Data</span>
-          <h2 class="section-title">The Numbers<br><em>Don't Lie</em></h2>
+        <div class="section-header">
+          <span class="section-eyebrow" data-es="Datos Exclusivos">Breaking Data</span>
+          <h2 class="section-title" data-es="Los Números<br><em>No Mienten</em>">The Numbers<br><em>Don't Lie</em></h2>
           <div class="news-dateline">BARCELONA, SPAIN &nbsp;·&nbsp; JUNE 2025 &nbsp;·&nbsp; CHRISTAIN- RESEARCH DESK</div>
         </div>
 
-        <!-- TikTok -->
-        <div class="platform-block gsap-fade-up">
+        <div class="platform-block">
           <div class="platform-header">
             <div class="platform-icon tiktok-icon"><i class="fab fa-tiktok"></i></div>
             <div class="platform-meta">
@@ -264,45 +221,44 @@
           </div>
           <div class="stats-grid">
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">Followers</span>
+              <span class="stat-label" data-es="Seguidores">Followers</span>
               <span class="stat-number" data-platform="tiktok" data-metric="followers" data-target="35.7" data-suffix="K">35.7K</span>
-              <span class="stat-sub">Total audience</span>
+              <span class="stat-sub" data-es="Audiencia total">Total audience</span>
             </div>
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">Total Likes</span>
+              <span class="stat-label" data-es="Likes Totales">Total Likes</span>
               <span class="stat-number" data-platform="tiktok" data-metric="total_likes" data-target="9.6" data-suffix="M">9.6M</span>
-              <span class="stat-sub">All-time engagement</span>
+              <span class="stat-sub" data-es="Engagement acumulado">All-time engagement</span>
             </div>
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">7-Day Views</span>
+              <span class="stat-label" data-es="Vistas 7 días">7-Day Views</span>
               <span class="stat-number" data-platform="tiktok" data-metric="weekly_views" data-target="40" data-suffix="K">40K</span>
               <span class="stat-sub stat-up">↑ +22.8%</span>
             </div>
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">Unique Viewers</span>
+              <span class="stat-label" data-es="Espectadores Únicos">Unique Viewers</span>
               <span class="stat-number" data-platform="tiktok" data-metric="weekly_viewers" data-target="30" data-suffix="K">30K</span>
               <span class="stat-sub stat-up">↑ +25.7%</span>
             </div>
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">New Viewers</span>
+              <span class="stat-label" data-es="Nuevos Espectadores">New Viewers</span>
               <span class="stat-number" data-platform="tiktok" data-metric="weekly_new_viewers" data-target="20" data-suffix="K">20K</span>
               <span class="stat-sub stat-up">↑ +43.4%</span>
             </div>
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">Top Video</span>
+              <span class="stat-label" data-es="Top Video">Top Video</span>
               <span class="stat-number" data-platform="tiktok" data-metric="top_video" data-target="2.8" data-suffix="M">2.8M</span>
-              <span class="stat-sub">Single video views</span>
+              <span class="stat-sub" data-es="Vistas en un solo video">Single video views</span>
             </div>
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">Search Traffic</span>
+              <span class="stat-label" data-es="Tráfico de Búsqueda">Search Traffic</span>
               <span class="stat-number" data-platform="tiktok" data-metric="search_traffic" data-target="52.1" data-suffix="%">52.1%</span>
-              <span class="stat-sub">Organic discovery</span>
+              <span class="stat-sub" data-es="Descubrimiento orgánico">Organic discovery</span>
             </div>
           </div>
         </div>
 
-        <!-- Instagram -->
-        <div class="platform-block gsap-fade-up">
+        <div class="platform-block">
           <div class="platform-header">
             <div class="platform-icon ig-icon"><i class="fab fa-instagram"></i></div>
             <div class="platform-meta">
@@ -316,66 +272,65 @@
           </div>
           <div class="stats-grid">
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">Followers</span>
+              <span class="stat-label" data-es="Seguidores">Followers</span>
               <span class="stat-number" data-platform="instagram" data-metric="followers" data-target="12.9" data-suffix="K">12.9K</span>
-              <span class="stat-sub">Total audience</span>
+              <span class="stat-sub" data-es="Audiencia total">Total audience</span>
             </div>
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">Monthly Views</span>
+              <span class="stat-label" data-es="Vistas Mensuales">Monthly Views</span>
               <span class="stat-number" data-platform="instagram" data-metric="monthly_views" data-target="516.6" data-suffix="K">516.6K</span>
-              <span class="stat-sub">Last 30 days</span>
+              <span class="stat-sub" data-es="Últimos 30 días">Last 30 days</span>
             </div>
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">Interactions</span>
+              <span class="stat-label" data-es="Interacciones">Interactions</span>
               <span class="stat-number" data-platform="instagram" data-metric="monthly_interactions" data-target="62.8" data-suffix="K">62.8K</span>
-              <span class="stat-sub">Monthly engagement</span>
+              <span class="stat-sub" data-es="Engagement mensual">Monthly engagement</span>
             </div>
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">Accounts Reached</span>
+              <span class="stat-label" data-es="Cuentas Alcanzadas">Accounts Reached</span>
               <span class="stat-number" data-platform="instagram" data-metric="accounts_reached" data-target="320.3" data-suffix="K">320.3K</span>
-              <span class="stat-sub">Monthly reach</span>
+              <span class="stat-sub" data-es="Alcance mensual">Monthly reach</span>
             </div>
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">Organic Reach</span>
+              <span class="stat-label" data-es="Alcance Orgánico">Organic Reach</span>
               <span class="stat-number" data-platform="instagram" data-metric="nonfollower_reach" data-target="86.4" data-suffix="%">86.4%</span>
-              <span class="stat-sub">Non-follower views</span>
+              <span class="stat-sub" data-es="Vistas sin seguir">Non-follower views</span>
             </div>
             <div class="stat-card glass gsap-counter-card">
-              <span class="stat-label">New Followers</span>
+              <span class="stat-label" data-es="Nuevos Seguidores">New Followers</span>
               <span class="stat-number" data-platform="instagram" data-metric="new_followers" data-target="229" data-suffix="">229</span>
-              <span class="stat-sub">Last 30 days</span>
+              <span class="stat-sub" data-es="Últimos 30 días">Last 30 days</span>
             </div>
           </div>
         </div>
 
-        <div class="stats-callout gsap-fade-up">
+        <div class="stats-callout">
           <div class="callout-line"></div>
-          <blockquote>"86.4% of Instagram reach comes from non-followers — organic discovery at scale."</blockquote>
+          <blockquote data-es='"El 86.4% del alcance de Instagram proviene de no-seguidores — descubrimiento orgánico a escala."'>"86.4% of Instagram reach comes from non-followers — organic discovery at scale."</blockquote>
           <div class="callout-line"></div>
         </div>
-
-        <div class="live-indicator gsap-fade-up">
+        <div class="live-indicator">
           <span class="live-dot"></span>
-          <span>Live stats · Last updated: <span id="lastSync">—</span></span>
+          <span data-es="Estadísticas en vivo · Última actualización: ">Live stats · Last updated: </span><span id="lastSync">—</span>
         </div>
       </div>
     </section>
 
-    <!-- ─── DEMOGRAPHICS ─────────────────────────────────────── -->
+    <!-- ─── DEMOGRAPHICS ─────────────────────────────────── -->
     <section id="demographics" class="section-demo" data-chapter="ch02">
       <div class="container">
-        <div class="section-header gsap-fade-up">
-          <span class="section-eyebrow">Audience Report</span>
-          <h2 class="section-title">Who's <em>Reading</em></h2>
+        <div class="section-header">
+          <span class="section-eyebrow" data-es="Informe de Audiencia">Audience Report</span>
+          <h2 class="section-title" data-es="Quién <em>Lee</em>">Who's <em>Reading</em></h2>
         </div>
         <div class="demo-grid">
-          <div class="demo-panel glass gsap-fade-up">
+          <div class="demo-panel glass">
             <div class="demo-panel-head">
               <i class="fab fa-tiktok"></i>
-              <h3>TikTok Audience</h3>
+              <h3 data-es="Audiencia TikTok">TikTok Audience</h3>
             </div>
             <div class="demo-block">
-              <h4>Age Distribution</h4>
+              <h4 data-es="Distribución de Edad">Age Distribution</h4>
               <div class="bar-list">
                 <div class="bar-row"><span class="bar-lbl">18–24</span><div class="bar-track"><div class="bar-fill" data-width="45"></div></div><span class="bar-pct">45.0%</span></div>
                 <div class="bar-row"><span class="bar-lbl">25–34</span><div class="bar-track"><div class="bar-fill" data-width="36.9"></div></div><span class="bar-pct">36.9%</span></div>
@@ -384,14 +339,14 @@
               </div>
             </div>
             <div class="demo-block">
-              <h4>Gender</h4>
+              <h4 data-es="Género">Gender</h4>
               <div class="gender-split">
                 <div class="gender-bar-women" style="width:56.6%"><span>Women 56.6%</span></div>
                 <div class="gender-bar-men" style="width:43.4%"><span>Men 43.4%</span></div>
               </div>
             </div>
             <div class="demo-block">
-              <h4>Top Locations</h4>
+              <h4 data-es="Top Ubicaciones">Top Locations</h4>
               <div class="bar-list">
                 <div class="bar-row"><span class="bar-lbl">🇲🇽 Mexico</span><div class="bar-track"><div class="bar-fill" data-width="41.6"></div></div><span class="bar-pct">41.6%</span></div>
                 <div class="bar-row"><span class="bar-lbl">🇪🇸 Spain</span><div class="bar-track"><div class="bar-fill" data-width="16.7"></div></div><span class="bar-pct">16.7%</span></div>
@@ -401,14 +356,13 @@
               </div>
             </div>
           </div>
-
-          <div class="demo-panel glass gsap-fade-up">
+          <div class="demo-panel glass">
             <div class="demo-panel-head">
               <i class="fab fa-instagram"></i>
-              <h3>Instagram Audience</h3>
+              <h3 data-es="Audiencia Instagram">Instagram Audience</h3>
             </div>
             <div class="demo-block">
-              <h4>Age Distribution</h4>
+              <h4 data-es="Distribución de Edad">Age Distribution</h4>
               <div class="bar-list">
                 <div class="bar-row"><span class="bar-lbl">18–24</span><div class="bar-track"><div class="bar-fill" data-width="48.5"></div></div><span class="bar-pct">48.5%</span></div>
                 <div class="bar-row"><span class="bar-lbl">25–34</span><div class="bar-track"><div class="bar-fill" data-width="43.4"></div></div><span class="bar-pct">43.4%</span></div>
@@ -417,83 +371,100 @@
               </div>
             </div>
             <div class="demo-block">
-              <h4>Gender</h4>
+              <h4 data-es="Género">Gender</h4>
               <div class="gender-split">
                 <div class="gender-bar-women" style="width:56%"><span>Female 56%</span></div>
                 <div class="gender-bar-men" style="width:43%"><span>Male 43%</span></div>
               </div>
             </div>
             <div class="demo-block">
-              <h4>Reach Breakdown</h4>
+              <h4 data-es="Desglose de Alcance">Reach Breakdown</h4>
               <div class="reach-row">
                 <div class="reach-item">
-                  <div class="reach-circle" style="--pct:86.4;--color:#cc1a00">
+                  <div class="reach-circle">
                     <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#333" stroke-width="3"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#cc1a00" stroke-width="3" stroke-dasharray="86.4 13.6" stroke-dashoffset="25" class="donut-arc"/></svg>
                     <span>86.4%</span>
                   </div>
-                  <p>Non-followers</p>
+                  <p data-es="No-seguidores">Non-followers</p>
                 </div>
                 <div class="reach-item">
-                  <div class="reach-circle" style="--pct:13.6;--color:#666">
+                  <div class="reach-circle">
                     <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#333" stroke-width="3"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#666" stroke-width="3" stroke-dasharray="13.6 86.4" stroke-dashoffset="25" class="donut-arc"/></svg>
                     <span>13.6%</span>
                   </div>
-                  <p>Followers</p>
+                  <p data-es="Seguidores">Followers</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <p class="annotation gsap-fade-up" style="--rot:-1deg;text-align:center;margin-top:2.5rem;display:block;">
+        <p class="annotation" style="--rot:-1deg;text-align:center;margin-top:2.5rem;display:block;"
+          data-es="El 86.4% NO son seguidores → el alcance orgánico es el producto.">
           86.4% are NOT followers → organic reach is the product.
         </p>
       </div>
     </section>
 
-    <!-- ─── BRANDS INTRO ─────────────────────────────────────── -->
+    <!-- ─── BRANDS INTRO ──────────────────────────────────── -->
     <section id="brands" class="section-brands-intro" data-chapter="ch03">
-      <div class="chapter-divider chapter-snap-card">
-        <span class="chapter-num gsap-slide-left">03</span>
-        <span class="chapter-kicker gsap-fade-up">Brand Portfolio</span>
-        <h2 class="chapter-title-lg gsap-fade-up">The Evidence</h2>
-        <p class="chapter-intro-line gsap-fade-up">Brands that invested. Content that delivered.</p>
+      <div class="chapter-divider">
+        <span class="chapter-num">03</span>
+        <span class="chapter-kicker" data-es="Colecciones de Marcas">Brand Portfolio</span>
+        <h2 class="chapter-title-lg" data-es="La Evidencia">The Evidence</h2>
+        <p class="chapter-intro-line" data-es="Marcas que invirtieron. Contenido que entregó.">Brands that invested. Content that delivered.</p>
       </div>
     </section>
 
-    <!-- ─── BRAND: CORE DIVISION ─────────────────────────────── -->
-    <section class="brand-section" id="brand-core-division" data-chapter="ch03">
-      <div class="brand-layout container">
-        <div class="brand-identity-col">
-          <div class="brand-exclusive-kicker">EXCLUSIVE:</div>
-          <div class="brand-stars-row" aria-hidden="true">★ ★ ★</div>
-          <h2 class="brand-wordmark">CORE<br>DIVISION</h2>
-          <div class="brand-category-tag">Streetwear · Fashion</div>
-          <p class="brand-description">
-            Premium streetwear defined by bold graphics and athletic heritage. Created organic content that authentically integrates Core Division's identity into urban lifestyle storytelling — reaching an engaged audience across Spain and Latin America.
-          </p>
-          <p class="annotation" style="--rot:2deg">*2.8M views don't lie.</p>
-          <div class="brand-collab-types">
-            <span>Organic Content</span>
-            <span>TikTok</span>
-            <span>Instagram Reels</span>
-          </div>
-          <a href="https://www.instagram.com/chrtt.prieto" target="_blank" rel="noopener" class="brand-ig-cta">
-            <i class="fab fa-instagram"></i> View on Instagram
-          </a>
-        </div>
-        <div class="brand-photos-col">
-          <div class="brand-photo brand-photo-primary brand-photo-reveal">
-            <img src="assets/images/core-division-1.jpg" alt="Christian Prieto x Core Division" loading="lazy">
-            <div class="brand-photo-caption">@chrtt.prieto × Core Division</div>
-          </div>
-          <div class="brand-photo brand-photo-secondary brand-photo-reveal" style="transition-delay:0.15s">
-            <img src="assets/images/core-division-2.jpg" alt="Christian Prieto x Core Division detail" loading="lazy">
+    <!-- ─── BRAND: CORE DIVISION (Fullt Collective style) ── -->
+    <section class="bmag-cover" id="brand-core-division" data-chapter="ch03">
+      <div class="bmag-top">
+        <div class="bmag-dots-row" aria-hidden="true">· · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · · ·</div>
+        <div class="bmag-title-bar">
+          <h2 class="bmag-brand-name">CORE<br>DIVISION</h2>
+          <div class="bmag-title-meta">
+            <span class="bmag-url">https://coredivision.com</span>
+            <span class="bmag-edition">Nr.1 · Spring 2024</span>
           </div>
         </div>
+        <div class="bmag-red-bar" aria-hidden="true"></div>
+      </div>
+      <div class="bmag-body">
+        <div class="bmag-side bmag-side--left">
+          <div class="bmag-callout-item">
+            <strong class="bmag-callout-head" data-es="ESTILO STREETWEAR">STREETWEAR STYLE</strong>
+            <p class="bmag-callout-body" data-es="Streetwear premium definido por gráficos atrevidos y herencia atlética.">Premium streetwear defined by bold graphics and athletic heritage. Made for the streets, worn by the culture.</p>
+          </div>
+          <div class="bmag-callout-item">
+            <strong class="bmag-callout-head" data-es="CONTENIDO ORGÁNICO">ORGANIC CONTENT</strong>
+            <p class="bmag-callout-body" data-es="Integración auténtica en narrativas de estilo de vida urbano por toda España y LatAm.">Authentic integration into urban lifestyle storytelling, reaching engaged audiences across Spain and Latin America.</p>
+          </div>
+        </div>
+        <div class="bmag-photo-wrap">
+          <img src="assets/images/core-division-1.jpg" alt="Christian Prieto × Core Division" class="bmag-photo-img">
+          <div class="bmag-photo-overlay">
+            <span class="annotation" style="--rot:3deg" data-es="*2.8M vistas no mienten.">*2.8M views don't lie.</span>
+          </div>
+        </div>
+        <div class="bmag-side bmag-side--right">
+          <div class="bmag-callout-item bmag-callout-item--feature">
+            <strong class="bmag-callout-stat">2.8M</strong>
+            <p class="bmag-callout-body" data-es="Vistas en el video de colaboración top">Top video views in a single collaboration</p>
+          </div>
+          <div class="bmag-callout-item">
+            <strong class="bmag-callout-head">SPRING 2024</strong>
+            <p class="bmag-callout-body" data-es="La mejor collab que hemos tenido. Mira cómo la hicimos.">The best collab we ever had. See how we built it — and why it worked.</p>
+          </div>
+          <span class="bmag-collab-tag">TikTok · Instagram Reels</span>
+        </div>
+      </div>
+      <div class="bmag-footer">
+        <div class="bmag-barcode" id="bmagBarcode1" aria-hidden="true"></div>
+        <span class="bmag-footer-text" data-es="Contenido disponible para colaboración · <a href='#contact'>Contáctanos</a>">Content available for brand collaboration · <a href="#contact">Get in touch</a></span>
+        <span class="bmag-page-num">p.06</span>
       </div>
     </section>
 
-    <!-- ─── MARQUEE ───────────────────────────────────────────── -->
+    <!-- ─── MARQUEE ────────────────────────────────────────── -->
     <div class="section-marquee" data-chapter="ch03" aria-hidden="true">
       <div class="marquee-wrap">
         <div class="marquee-track">
@@ -521,50 +492,120 @@
       </div>
     </div>
 
-    <!-- ─── FORMATS ───────────────────────────────────────────── -->
+    <!-- ─── BRAND: PLACEHOLDER 2 (Balenciaga editorial) ──── -->
+    <section class="bmag-cover bmag-cover--editorial" id="brand-ph2" data-chapter="ch03">
+      <div class="bmag-editorial-bg">
+        <img src="assets/images/pink-stars.jpg" alt="" aria-hidden="true" class="bmag-editorial-photo">
+        <div class="bmag-editorial-overlay"></div>
+      </div>
+      <div class="bmag-editorial-ui">
+        <div class="bmag-editorial-tl">
+          <span class="bmag-season-tag">FUTURE COLLABORATION</span>
+          <div class="bmag-callout-editorial">
+            <strong>YOUR BRAND.</strong>
+            <p>The next generation<br>defines the culture.</p>
+          </div>
+          <div class="bmag-callout-editorial">
+            <strong>EXCLUSIVE.</strong>
+            <p>Content that moves<br>beyond fashion.</p>
+          </div>
+          <div class="bmag-callout-editorial">
+            <strong>BEYOND CONTENT</strong>
+            <p>How creators continue<br>to break codes and<br>build culture.</p>
+          </div>
+        </div>
+        <h2 class="bmag-editorial-name" data-es="TU<br>MARCA<br>AQUÍ.">YOUR<br>BRAND<br>HERE.</h2>
+        <div class="bmag-editorial-tr">
+          <span class="bmag-edition-tag">ISSUE 001</span>
+          <div class="bmag-callout-editorial right">
+            <strong>NEXT WAVE</strong>
+            <p>Icons of tomorrow,<br>writing history today.</p>
+          </div>
+          <div class="bmag-callout-editorial right">
+            <strong>PARIS TO THE WORLD</strong>
+            <p>The creator that<br>dares you to<br>be different.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bmag-editorial-footer">
+        <div class="bmag-barcode" id="bmagBarcode2" aria-hidden="true"></div>
+        <span class="bmag-slot-tag" data-es="← Espacio disponible">← Slot available</span>
+        <a href="#contact" class="bmag-cta-btn" data-es="Hablar →">Get in touch →</a>
+      </div>
+    </section>
+
+    <!-- ─── BRAND: PLACEHOLDER 3 (Vogue Nigeria luxury) ──── -->
+    <section class="bmag-cover bmag-cover--luxury" id="brand-ph3" data-chapter="ch03">
+      <div class="bmag-luxury-bg" aria-hidden="true"></div>
+      <div class="bmag-luxury-header">
+        <span class="bmag-luxury-sub-label" data-es="FUTURO">FUTURE</span>
+        <h2 class="bmag-luxury-name" data-es="TU<br>MARCA.">YOUR<br>BRAND.</h2>
+        <span class="bmag-year">2025</span>
+      </div>
+      <div class="bmag-luxury-body">
+        <div class="bmag-luxury-left">
+          <p class="bmag-luxury-callout" data-es="LA GUÍA DEFINITIVA A TU PRÓXIMA COLABORACIÓN">THE ULTIMATE GUIDE TO YOUR NEXT COLLABORATION</p>
+          <p class="bmag-luxury-callout" data-es="LEGADO MODERNO: ASOCIACIONES ICÓNICAS">MODERN LEGACY: ICONIC PARTNERSHIPS</p>
+          <p class="bmag-luxury-callout" data-es="RESULTADOS ATREVIDOS">BOLD RESULTS</p>
+        </div>
+        <div class="bmag-luxury-photo">
+          <img src="assets/images/street-hoodie.jpg" alt="Christian Prieto" loading="lazy">
+        </div>
+        <div class="bmag-luxury-right">
+          <h3 class="bmag-luxury-headline" data-es="OSCURO<br>Y<br>PELIGROSO">DARK<br>AND<br>DANGEROUS</h3>
+          <p class="bmag-luxury-sub-text" data-es="EL ASCENSO DEL PRÓXIMO ÍCONO DE ESTILO DE BARCELONA">THE RISE OF BARCELONA'S NEXT STYLE ICON</p>
+        </div>
+      </div>
+      <div class="bmag-luxury-footer">
+        <div class="bmag-barcode" id="bmagBarcode3" aria-hidden="true"></div>
+        <a href="#contact" class="bmag-cta-btn" data-es="Colaborar →">Collaborate →</a>
+      </div>
+    </section>
+
+    <!-- ─── FORMATS ───────────────────────────────────────── -->
     <section id="formats" class="section-formats" data-chapter="ch04">
-      <div class="chapter-divider chapter-snap-card">
-        <span class="chapter-num gsap-slide-left">04</span>
-        <span class="chapter-kicker gsap-fade-up">Collaboration</span>
-        <h2 class="chapter-title-lg gsap-fade-up">The Playbook</h2>
+      <div class="chapter-divider">
+        <span class="chapter-num">04</span>
+        <span class="chapter-kicker" data-es="Colaboración">Collaboration</span>
+        <h2 class="chapter-title-lg" data-es="El Manual">The Playbook</h2>
       </div>
       <div class="container">
-        <div class="cards-deck gsap-fade-up">
+        <div class="cards-deck">
           <div class="trade-card trade-card--01">
-            <div class="trade-card-badge">Limited Edition · No.001</div>
+            <div class="trade-card-badge" data-es="Edición Limitada · No.001">Limited Edition · No.001</div>
             <div class="trade-card-num" aria-hidden="true">001</div>
             <div class="format-icon-wrap">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m10 9 5 3-5 3V9z"/></svg>
             </div>
-            <h3>Dedicated Videos &amp; Reviews</h3>
+            <h3 data-es="Videos Dedicados y Reviews">Dedicated Videos &amp; Reviews</h3>
             <div class="format-platforms">TikTok · Reels</div>
-            <p>High-retention, dynamic content with authentic product integration. Best for launches, reviews, and sustained brand awareness campaigns.</p>
+            <p data-es="Contenido de alta retención con integración auténtica del producto. Ideal para lanzamientos, reviews y campañas de brand awareness sostenidas.">High-retention, dynamic content with authentic product integration. Best for launches, reviews, and sustained brand awareness campaigns.</p>
             <div class="format-tags">
               <span class="tag">#TikTok</span><span class="tag">#Reels</span><span class="tag">#HighRetention</span>
             </div>
           </div>
           <div class="trade-card trade-card--02">
-            <div class="trade-card-badge">Most Popular · No.002</div>
+            <div class="trade-card-badge" data-es="Más Popular · No.002">Most Popular · No.002</div>
             <div class="trade-card-num" aria-hidden="true">002</div>
             <div class="format-icon-wrap">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </div>
-            <h3>Lifestyle Hauls &amp; Lookbooks</h3>
+            <h3 data-es="Hauls de Lifestyle y Lookbooks">Lifestyle Hauls &amp; Lookbooks</h3>
             <div class="format-platforms">TikTok · Instagram</div>
-            <p>Fashion styling content that positions your brand within a curated, aspirational wardrobe narrative. Editorial quality with proven organic reach.</p>
+            <p data-es="Contenido de moda que posiciona tu marca dentro de una narrativa de armario aspiracional. Calidad editorial con alcance orgánico probado.">Fashion styling content that positions your brand within a curated, aspirational wardrobe narrative. Editorial quality with proven organic reach.</p>
             <div class="format-tags">
               <span class="tag">#Fashion</span><span class="tag">#Styling</span><span class="tag">#Editorial</span>
             </div>
           </div>
           <div class="trade-card trade-card--03">
-            <div class="trade-card-badge">Rare Drop · No.003</div>
+            <div class="trade-card-badge" data-es="Rare Drop · No.003">Rare Drop · No.003</div>
             <div class="trade-card-num" aria-hidden="true">003</div>
             <div class="format-icon-wrap">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
-            <h3>Travel Vlogs &amp; Events</h3>
+            <h3 data-es="Vlogs de Viaje y Eventos">Travel Vlogs &amp; Events</h3>
             <div class="format-platforms">TikTok · Reels · Stories</div>
-            <p>Experiential brand placements embedded in immersive travel content. Perfect for hotels, destinations, and lifestyle experiences.</p>
+            <p data-es="Colocaciones de marca experienciales integradas en contenido de viajes inmersivo. Perfecto para hoteles, destinos y experiencias de lifestyle.">Experiential brand placements embedded in immersive travel content. Perfect for hotels, destinations, and lifestyle experiences.</p>
             <div class="format-tags">
               <span class="tag">#Travel</span><span class="tag">#Events</span><span class="tag">#Lifestyle</span>
             </div>
@@ -573,26 +614,26 @@
       </div>
     </section>
 
-    <!-- ─── VIDEO HIGHLIGHTS ─────────────────────────────────── -->
+    <!-- ─── VIDEO HIGHLIGHTS ──────────────────────────────── -->
     <section id="highlights" class="section-highlights" data-chapter="ch04">
       <div class="container">
-        <div class="section-header gsap-fade-up">
-          <span class="section-eyebrow">The Evidence</span>
-          <h2 class="section-title">Viral <em>Evidence</em></h2>
+        <div class="section-header">
+          <span class="section-eyebrow" data-es="La Evidencia">The Evidence</span>
+          <h2 class="section-title" data-es="Evidencia <em>Viral</em>">Viral <em>Evidence</em></h2>
           <p class="section-sub">9 videos &nbsp;·&nbsp; <strong>14M+ combined views</strong></p>
         </div>
         <div class="videos-grid">
-          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass gsap-fade-up" style="--vdelay:0s"><div class="video-thumb" style="background:linear-gradient(160deg,#1a0a2e,#3d1a6e)"><i class="fas fa-play"></i></div><span class="video-views">2.8M</span><span class="video-lbl">views</span></a>
-          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass gsap-fade-up" style="--vdelay:0.05s"><div class="video-thumb" style="background:linear-gradient(160deg,#0d1a0d,#1a4a1a)"><i class="fas fa-play"></i></div><span class="video-views">2.1M</span><span class="video-lbl">views</span></a>
-          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass gsap-fade-up" style="--vdelay:0.1s"><div class="video-thumb" style="background:linear-gradient(160deg,#1a0a0a,#4a1515)"><i class="fas fa-play"></i></div><span class="video-views">1.9M</span><span class="video-lbl">views</span></a>
-          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass gsap-fade-up" style="--vdelay:0.15s"><div class="video-thumb" style="background:linear-gradient(160deg,#0a0a1a,#18183a)"><i class="fas fa-play"></i></div><span class="video-views">1.6M</span><span class="video-lbl">views</span></a>
-          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass gsap-fade-up" style="--vdelay:0.2s"><div class="video-thumb" style="background:linear-gradient(160deg,#1a1205,#3a2810)"><i class="fas fa-play"></i></div><span class="video-views">1.5M</span><span class="video-lbl">views</span></a>
-          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass gsap-fade-up" style="--vdelay:0.25s"><div class="video-thumb" style="background:linear-gradient(160deg,#051515,#103535)"><i class="fas fa-play"></i></div><span class="video-views">1.2M</span><span class="video-lbl">views</span></a>
-          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass gsap-fade-up" style="--vdelay:0.3s"><div class="video-thumb" style="background:linear-gradient(160deg,#150a15,#381535)"><i class="fas fa-play"></i></div><span class="video-views">1.0M</span><span class="video-lbl">views</span></a>
-          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass gsap-fade-up" style="--vdelay:0.35s"><div class="video-thumb" style="background:linear-gradient(160deg,#101020,#252545)"><i class="fas fa-play"></i></div><span class="video-views">976K</span><span class="video-lbl">views</span></a>
-          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass gsap-fade-up" style="--vdelay:0.4s"><div class="video-thumb" style="background:linear-gradient(160deg,#081208,#152815)"><i class="fas fa-play"></i></div><span class="video-views">810K</span><span class="video-lbl">views</span></a>
+          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass"><div class="video-thumb" style="background:linear-gradient(160deg,#1a0a2e,#3d1a6e)"><i class="fas fa-play"></i></div><span class="video-views">2.8M</span><span class="video-lbl">views</span></a>
+          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass"><div class="video-thumb" style="background:linear-gradient(160deg,#0d1a0d,#1a4a1a)"><i class="fas fa-play"></i></div><span class="video-views">2.1M</span><span class="video-lbl">views</span></a>
+          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass"><div class="video-thumb" style="background:linear-gradient(160deg,#1a0a0a,#4a1515)"><i class="fas fa-play"></i></div><span class="video-views">1.9M</span><span class="video-lbl">views</span></a>
+          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass"><div class="video-thumb" style="background:linear-gradient(160deg,#0a0a1a,#18183a)"><i class="fas fa-play"></i></div><span class="video-views">1.6M</span><span class="video-lbl">views</span></a>
+          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass"><div class="video-thumb" style="background:linear-gradient(160deg,#1a1205,#3a2810)"><i class="fas fa-play"></i></div><span class="video-views">1.5M</span><span class="video-lbl">views</span></a>
+          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass"><div class="video-thumb" style="background:linear-gradient(160deg,#051515,#103535)"><i class="fas fa-play"></i></div><span class="video-views">1.2M</span><span class="video-lbl">views</span></a>
+          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass"><div class="video-thumb" style="background:linear-gradient(160deg,#150a15,#381535)"><i class="fas fa-play"></i></div><span class="video-views">1.0M</span><span class="video-lbl">views</span></a>
+          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass"><div class="video-thumb" style="background:linear-gradient(160deg,#101020,#252545)"><i class="fas fa-play"></i></div><span class="video-views">976K</span><span class="video-lbl">views</span></a>
+          <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="video-card glass"><div class="video-thumb" style="background:linear-gradient(160deg,#081208,#152815)"><i class="fas fa-play"></i></div><span class="video-views">810K</span><span class="video-lbl">views</span></a>
         </div>
-        <div class="highlights-footer gsap-fade-up">
+        <div class="highlights-footer">
           <a href="https://www.tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="btn-ghost">
             View All Content &nbsp;<i class="fab fa-tiktok"></i>
           </a>
@@ -600,21 +641,19 @@
       </div>
     </section>
 
-    <!-- ─── CONTACT ───────────────────────────────────────────── -->
-    <section id="contact" class="section-contact chapter-snap-card" data-chapter="ch05">
+    <!-- ─── CONTACT ───────────────────────────────────────── -->
+    <section id="contact" class="section-contact" data-chapter="ch05">
       <div class="container contact-inner">
-        <div class="contact-text gsap-fade-up">
-          <span class="section-eyebrow">Chapter 05 · Come Steal a Brand</span>
+        <div class="contact-text">
+          <span class="section-eyebrow" data-es="Capítulo 05 · Roba una Marca">Chapter 05 · Come Steal a Brand</span>
           <h2 class="contact-headline">
-            COME /<br>
-            STEAL /<br>
-            <span class="contact-headline-red">A BRAND.</span>
+            <span data-es="VEN /">COME /</span><br>
+            <span data-es="ROBA /">STEAL /</span><br>
+            <span class="contact-headline-red" data-es="UNA MARCA.">A BRAND.</span>
           </h2>
         </div>
-
-        <div class="pull-quote gsap-fade-up">"Your brand deserves an audience that actually gives a damn."</div>
-
-        <div class="contact-links gsap-fade-up">
+        <div class="pull-quote" data-es='"Tu marca merece una audiencia que de verdad le importe."'>"Your brand deserves an audience that actually gives a damn."</div>
+        <div class="contact-links">
           <a href="mailto:chrttprieto@gmail.com" class="contact-row glass">
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
             <div class="contact-details">
@@ -640,8 +679,7 @@
             <span class="contact-arrow">→</span>
           </a>
         </div>
-
-        <a href="mailto:chrttprieto@gmail.com" class="btn-primary btn-xl gsap-fade-up">
+        <a href="mailto:chrttprieto@gmail.com" class="btn-primary btn-xl" data-es="HAGAMOS ALGO">
           LET'S MAKE SOMETHING
         </a>
       </div>
@@ -650,14 +688,13 @@
 
   </main>
 
-  <!-- ─── FOOTER ───────────────────────────────────────────────── -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">CHRISTAIN-</span>
         <div>
           <span class="footer-name">CHRISTAIN-</span>
-          <span class="footer-tagline">Issue 001 · Digital Creator · Barcelona</span>
+          <span class="footer-tagline" data-es="Número 001 · Creador Digital · Barcelona">Issue 001 · Digital Creator · Barcelona</span>
           <span class="footer-issue-line">CHRISTAIN- Magazine · Est. 2025</span>
         </div>
       </div>
@@ -670,10 +707,8 @@
     </div>
   </footer>
 
-  <!-- Grain overlay -->
   <div class="grain" aria-hidden="true"></div>
 
-  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
