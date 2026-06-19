@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CHRISTAIN- Issue 001 — Christian Prieto. Digital Creator. Fashion, Lifestyle & Travel. 35.7K TikTok · 9.6M Likes · 516K monthly views.">
+  <title>CHRISTAIN- · Issue 001</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400;600;700&family=Permanent+Marker&family=Righteous&family=VT323&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner container">
+      <a href="#" class="nav-logo" data-goto="0">
+        <span class="masthead-logo-text">CHRISTAIN-</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#" data-page-link="2" data-es="CAP.01">CH.01</a></li>
+        <li><a href="#" data-page-link="4" data-es="CAP.02">CH.02</a></li>
+        <li><a href="#" data-page-link="6" data-es="CAP.03">CH.03</a></li>
+        <li><a href="#" data-page-link="9" class="nav-cta" data-es="TRABAJA CONMIGO">WORK WITH ME</a></li>
+      </ul>
+      <div class="nav-right">
+        <span id="pageCounter" class="page-counter">01 / 10</span>
+        <button id="langToggle" class="lang-toggle" aria-label="Toggle language">EN</button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+      <button class="nav-close" id="navClose" aria-label="Close menu">&#10005;</button>
+      <ul role="list">
+        <li><a href="#" class="overlay-link" data-page-link="0" data-es="PORTADA">MASTHEAD</a></li>
+        <li><a href="#" class="overlay-link" data-page-link="1" data-es="NOTA DEL EDITOR">EDITOR'S NOTE</a></li>
+        <li><a href="#" class="overlay-link" data-page-link="2" data-es="CAP.01">CH.01</a></li>
+        <li><a href="#" class="overlay-link" data-page-link="3" data-es="INSTAGRAM">INSTAGRAM</a></li>
+        <li><a href="#" class="overlay-link" data-page-link="4" data-es="CAP.02">CH.02</a></li>
+        <li><a href="#" class="overlay-link" data-page-link="5" data-es="AUDIENCIA">AUDIENCE</a></li>
+        <li><a href="#" class="overlay-link" data-page-link="6" data-es="LA EVIDENCIA">THE EVIDENCE</a></li>
+        <li><a href="#" class="overlay-link" data-page-link="7" data-es="CORE DIVISION">CORE DIVISION</a></li>
+        <li><a href="#" class="overlay-link" data-page-link="8" data-es="TU MARCA">YOUR BRAND</a></li>
+        <li><a href="#" class="overlay-link" data-page-link="9" data-es="TRABAJA CONMIGO">WORK WITH ME</a></li>
+      </ul>
+      <div class="overlay-socials">
+        <a href="https://tiktok.com/@chrtt.prieto" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a>
+        <a href="https://instagram.com/chrtt.prieto" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:chrttprieto@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FIXED PREV / NEXT ARROWS -->
+  <button id="btnPrev" class="flip-btn flip-btn--prev hidden" aria-label="Previous page">&#8592;</button>
+  <button id="btnNext" class="flip-btn flip-btn--next" aria-label="Next page">&#8594;</button>
+
+  <!-- FIXED DOT NAV -->
+  <nav class="dot-nav" aria-label="Page navigation">
+    <button class="dot-nav__dot active" data-goto="0" aria-label="Page 1"></button>
+    <button class="dot-nav__dot" data-goto="1" aria-label="Page 2"></button>
+    <button class="dot-nav__dot" data-goto="2" aria-label="Page 3"></button>
+    <button class="dot-nav__dot" data-goto="3" aria-label="Page 4"></button>
+    <button class="dot-nav__dot" data-goto="4" aria-label="Page 5"></button>
+    <button class="dot-nav__dot" data-goto="5" aria-label="Page 6"></button>
+    <button class="dot-nav__dot" data-goto="6" aria-label="Page 7"></button>
+    <button class="dot-nav__dot" data-goto="7" aria-label="Page 8"></button>
+    <button class="dot-nav__dot" data-goto="8" aria-label="Page 9"></button>
+    <button class="dot-nav__dot" data-goto="9" aria-label="Page 10"></button>
+  </nav>
+
+  <!-- MAGAZINE BOOK -->
+  <div class="magazine-book" id="magBook">
+
+    <!-- PAGE 1: ABOUT ME (Gemini edit — red jacket portrait) -->
+    <div class="mag-page p-img" id="p1" data-chapter="masthead">
+      <img src="assets/images/Screenshot_20260619-083823_Gallery.png" class="page-full-img" alt="About Christian Prieto">
+      <div class="p-img-overlay">
+        <div class="page-corner" aria-hidden="true">Issue 001 &nbsp;&middot;&nbsp; p.01</div>
+      </div>
+    </div>
+
+    <!-- PAGE 2: PROFILE (Lil Tecca stacked letters — Gemini edit) -->
+    <div class="mag-page p-img" id="p2" data-chapter="ch01">
+      <img src="assets/images/1781903315853.png" class="page-full-img" alt="Christian Prieto Profile">
+      <div class="p-img-overlay">
+        <div class="page-corner" aria-hidden="true" style="color:rgba(0,0,0,0.2)">Issue 001 &nbsp;&middot;&nbsp; p.02</div>
+      </div>
+    </div>
+
+    <!-- PAGE 3: EDITOR'S NOTE (open magazine spread — Gemini edit) -->
+    <div class="mag-page p-img" id="p3" data-chapter="ch01">
+      <img src="assets/images/1781902912231.png" class="page-full-img" alt="Editor's Note">
+      <div class="p-img-overlay">
+        <div class="page-corner" aria-hidden="true" style="color:rgba(0,0,0,0.2)">Issue 001 &nbsp;&middot;&nbsp; p.03</div>
+      </div>
+    </div>
+
+    <!-- PAGE 4: INSTAGRAM (phone mockup) -->
+    <div class="mag-page p-social" id="p4" data-chapter="masthead">
+      <div class="social-bg-blur" aria-hidden="true"></div>
+      <div class="social-phone-frame" id="socialPhone">
+        <div class="phone-notch" aria-hidden="true"></div>
+        <div class="phone-screen">
+          <div class="ig-profile-bar">
+            <div class="ig-avatar">
+              <img src="assets/images/portrait-bw.jpg" alt="@chrtt.prieto">
+            </div>
+            <div class="ig-profile-info">
+              <span class="ig-username">chrtt.prieto</span>
+              <div class="ig-stats-row">
+                <span><strong>47</strong> posts</span>
+                <span><strong>12.9K</strong> followers</span>
+                <span><strong>841</strong> following</span>
+              </div>
+            </div>
+          </div>
+          <div class="ig-grid-wrapper">
+            <div class="ig-grid-phone" id="igGridPhone">
+              <div class="ig-cell-phone"><img src="assets/images/pink-stars.jpg" alt="" loading="lazy"></div>
+              <div class="ig-cell-phone"><img src="assets/images/dressed-to-kill.jpg" alt="" loading="lazy"></div>
+              <div class="ig-cell-phone"><img src="assets/images/street-hoodie.jpg" alt="" loading="lazy"></div>
+              <div class="ig-cell-phone"><img src="assets/images/core-division-1.jpg" alt="" loading="lazy"></div>
+              <div class="ig-cell-phone"><img src="assets/images/core-division-2.jpg" alt="" loading="lazy"></div>
+              <div class="ig-cell-phone"><img src="assets/images/portrait-bw.jpg" alt="" loading="lazy"></div>
+              <div class="ig-cell-phone"><img src="assets/images/pink-stars.jpg" alt="" loading="lazy"></div>
+              <div class="ig-cell-phone"><img src="assets/images/dressed-to-kill.jpg" alt="" loading="lazy"></div>
+              <div class="ig-cell-phone"><img src="assets/images/street-hoodie.jpg" alt="" loading="lazy"></div>
+              <div class="ig-cell-phone"><img src="assets/images/core-division-1.jpg" alt="" loading="lazy"></div>
+              <div class="ig-cell-phone"><img src="assets/images/core-division-2.jpg" alt="" loading="lazy"></div>
+              <div class="ig-cell-phone"><img src="assets/images/portrait-bw.jpg" alt="" loading="lazy"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="social-editorial-text" id="socialText">
+        <span class="social-platform-tag">@chrtt.prieto &nbsp;&middot;&nbsp; Instagram</span>
+        <h2 class="social-headline">12.9K<br><em>Followers.</em><br>516K<br><em data-es="Ojos mensuales.">Monthly eyes.</em></h2>
+        <p class="social-caption" data-es="Antes de los n&uacute;meros &mdash; estaba el feed.">Before the numbers &mdash; there was the feed.</p>
+        <span class="annotation" style="--rot:3deg" data-es="s&iacute;, esos n&uacute;meros son reales">yes, those are real numbers</span>
+      </div>
+      <div class="social-grain" aria-hidden="true"></div>
+    </div>
+
+    <!-- PAGE 5: CHRISTAIN- TIMES (Ehisworld Times newspaper) -->
+    <div class="mag-page p-times" id="p5" data-chapter="ch02">
+      <div class="times-header">
+        <h1 class="times-masthead">CHRISTAIN- TIMES</h1>
+        <div class="times-breaking-badge" aria-hidden="true">BREAKING</div>
+        <div class="times-subbar">
+          <span class="times-tag">CHRISTAIN- THURSDAYS</span>
+          <div class="times-mark">CH</div>
+          <span class="times-time" data-es="JUNIO 2025">JUNE 2025</span>
+        </div>
+        <div class="times-rule"></div>
+      </div>
+      <div class="times-body">
+        <div class="times-vertical-word" aria-hidden="true">STATS</div>
+        <img src="assets/images/portrait-bw.jpg" alt="Christian Prieto" class="times-photo">
+        <div class="times-columns">
+          <div class="times-callout-block">
+            <strong data-es="POL&Iacute;TICA DE HYPE">HYPE POLICY</strong>
+            <p>35.7K Followers<br>9.6M Total Likes<br>2.8M Top Video</p>
+          </div>
+          <div class="times-date-block">
+            <h2 data-es="JUEVES<br>JUNIO 2025">THURSDAY<br>JUNE 2025</h2>
+            <p data-es="BARCELONA<br>ESPA&Ntilde;A">BARCELONA<br>SPAIN</p>
+          </div>
+        </div>
+      </div>
+      <div class="times-stats-grid">
+        <div class="section-header times-stats-header">
+          <span class="section-eyebrow" data-es="Datos Exclusivos">Breaking Data</span>
+          <h2 class="section-title">The Numbers <em>Don't Lie</em></h2>
+          <div class="news-dateline">BARCELONA, SPAIN &nbsp;&middot;&nbsp; JUNE 2025 &nbsp;&middot;&nbsp; CHRISTAIN- RESEARCH DESK</div>
+        </div>
+        <div class="platform-block">
+          <div class="platform-header">
+            <div class="platform-icon tiktok-icon"><i class="fab fa-tiktok"></i></div>
+            <div class="platform-meta">
+              <span class="news-scoop-tag">EXCLUSIVE &middot;</span>
+              <h3>TikTok</h3>
+              <span>@chrtt.prieto</span>
+            </div>
+            <a href="https://tiktok.com/@chrtt.prieto" target="_blank" rel="noopener" class="platform-link-btn">
+              View Profile <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Seguidores">Followers</span>
+              <span class="stat-number" data-platform="tiktok" data-metric="followers" data-target="35.7" data-suffix="K">35.7K</span>
+              <span class="stat-sub" data-es="Audiencia total">Total audience</span>
+            </div>
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Likes Totales">Total Likes</span>
+              <span class="stat-number" data-platform="tiktok" data-metric="total_likes" data-target="9.6" data-suffix="M">9.6M</span>
+              <span class="stat-sub" data-es="Engagement acumulado">All-time engagement</span>
+            </div>
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Vistas 7 d&iacute;as">7-Day Views</span>
+              <span class="stat-number" data-platform="tiktok" data-metric="weekly_views" data-target="40" data-suffix="K">40K</span>
+              <span class="stat-sub stat-up">+22.8%</span>
+            </div>
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Espectadores &Uacute;nicos">Unique Viewers</span>
+              <span class="stat-number" data-platform="tiktok" data-metric="weekly_viewers" data-target="30" data-suffix="K">30K</span>
+              <span class="stat-sub stat-up">+25.7%</span>
+            </div>
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Nuevos Espectadores">New Viewers</span>
+              <span class="stat-number" data-platform="tiktok" data-metric="weekly_new_viewers" data-target="20" data-suffix="K">20K</span>
+              <span class="stat-sub stat-up">+43.4%</span>
+            </div>
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Top Video">Top Video</span>
+              <span class="stat-number" data-platform="tiktok" data-metric="top_video" data-target="2.8" data-suffix="M">2.8M</span>
+              <span class="stat-sub" data-es="Vistas en un solo video">Single video views</span>
+            </div>
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Tr&aacute;fico de B&uacute;squeda">Search Traffic</span>
+              <span class="stat-number" data-platform="tiktok" data-metric="search_traffic" data-target="52.1" data-suffix="%">52.1%</span>
+              <span class="stat-sub" data-es="Descubrimiento org&aacute;nico">Organic discovery</span>
+            </div>
+          </div>
+        </div>
+        <div class="platform-block">
+          <div class="platform-header">
+            <div class="platform-icon ig-icon"><i class="fab fa-instagram"></i></div>
+            <div class="platform-meta">
+              <span class="news-scoop-tag">DATA REPORT &middot;</span>
+              <h3>Instagram</h3>
+              <span>@chrtt.prieto</span>
+            </div>
+            <a href="https://instagram.com/chrtt.prieto" target="_blank" rel="noopener" class="platform-link-btn">
+              View Profile <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Seguidores">Followers</span>
+              <span class="stat-number" data-platform="instagram" data-metric="followers" data-target="12.9" data-suffix="K">12.9K</span>
+              <span class="stat-sub" data-es="Audiencia total">Total audience</span>
+            </div>
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Vistas Mensuales">Monthly Views</span>
+              <span class="stat-number" data-platform="instagram" data-metric="monthly_views" data-target="516.6" data-suffix="K">516.6K</span>
+              <span class="stat-sub" data-es="&Uacute;ltimos 30 d&iacute;as">Last 30 days</span>
+            </div>
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Interacciones">Interactions</span>
+              <span class="stat-number" data-platform="instagram" data-metric="monthly_interactions" data-target="62.8" data-suffix="K">62.8K</span>
+              <span class="stat-sub" data-es="Engagement mensual">Monthly engagement</span>
+            </div>
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Cuentas Alcanzadas">Accounts Reached</span>
+              <span class="stat-number" data-platform="instagram" data-metric="accounts_reached" data-target="320.3" data-suffix="K">320.3K</span>
+              <span class="stat-sub" data-es="Alcance mensual">Monthly reach</span>
+            </div>
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Alcance Org&aacute;nico">Organic Reach</span>
+              <span class="stat-number" data-platform="instagram" data-metric="nonfollower_reach" data-target="86.4" data-suffix="%">86.4%</span>
+              <span class="stat-sub" data-es="Vistas sin seguir">Non-follower views</span>
+            </div>
+            <div class="stat-card glass gsap-counter-card">
+              <span class="stat-label" data-es="Nuevos Seguidores">New Followers</span>
+              <span class="stat-number" data-platform="instagram" data-metric="new_followers" data-target="229" data-suffix="">229</span>
+              <span class="stat-sub" data-es="&Uacute;ltimos 30 d&iacute;as">Last 30 days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-corner" aria-hidden="true" style="color:rgba(13,13,13,0.18)">Issue 001 &nbsp;&middot;&nbsp; p.05</div>
+      <div class="times-footer">
+        <div class="times-big-num">35.7K</div>
+        <div class="times-sub-label" data-es="Seguidores TikTok">TikTok Followers</div>
+        <div class="live-indicator">
+          <span class="live-dot"></span>
+          <span data-es="Estad&iacute;sticas en vivo &middot; &Uacute;ltima actualizaci&oacute;n: ">Live stats &middot; Last updated: </span><span id="lastSync">&mdash;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 6: AUDIENCE (Lil Tecca stacked type) -->
+    <div class="mag-page p-audience" id="p6" data-chapter="ch02">
+      <div class="aud-type-col">
+        <div class="stacked-letters">
+          <span>A</span>
+          <span>AU</span>
+          <span>AUD</span>
+          <span>AUDI</span>
+          <span>AUDIE</span>
+          <span>AUDIEN</span>
+          <span class="sl-full">AUDIENCE</span>
+          <span class="sl-sub" data-es="INFORME">REPORT</span>
+        </div>
+        <p class="aud-caption" data-es="Los datos reales.<br>Sin filtros.">The real data.<br>No filters.</p>
+        <span class="aud-page-num">6</span>
+      </div>
+      <div class="aud-data-col">
+        <div class="demo-panel glass">
+          <div class="demo-panel-head">
+            <i class="fab fa-tiktok"></i>
+            <h3 data-es="Audiencia TikTok">TikTok Audience</h3>
+          </div>
+          <div class="demo-block">
+            <h4 data-es="Distribuci&oacute;n de Edad">Age Distribution</h4>
+            <div class="bar-list">
+              <div class="bar-row"><span class="bar-lbl">18-24</span><div class="bar-track"><div class="bar-fill" data-width="45"></div></div><span class="bar-pct">45.0%</span></div>
+              <div class="bar-row"><span class="bar-lbl">25-34</span><div class="bar-track"><div class="bar-fill" data-width="36.9"></div></div><span class="bar-pct">36.9%</span></div>
+              <div class="bar-row"><span class="bar-lbl">13-17</span><div class="bar-track"><div class="bar-fill" data-width="11.1"></div></div><span class="bar-pct">11.1%</span></div>
+              <div class="bar-row"><span class="bar-lbl">35-44</span><div class="bar-track"><div class="bar-fill" data-width="4.8"></div></div><span class="bar-pct">4.8%</span></div>
+            </div>
+          </div>
+          <div class="demo-block">
+            <h4 data-es="G&eacute;nero">Gender</h4>
+            <div class="gender-split">
+              <div class="gender-bar-women" style="width:56.6%"><span>Women 56.6%</span></div>
+              <div class="gender-bar-men" style="width:43.4%"><span>Men 43.4%</span></div>
+            </div>
+          </div>
+          <div class="demo-block">
+            <h4 data-es="Top Ubicaciones">Top Locations</h4>
+            <div class="bar-list">
+              <div class="bar-row"><span class="bar-lbl">Mexico</span><div class="bar-track"><div class="bar-fill" data-width="41.6"></div></div><span class="bar-pct">41.6%</span></div>
+              <div class="bar-row"><span class="bar-lbl">Spain</span><div class="bar-track"><div class="bar-fill" data-width="16.7"></div></div><span class="bar-pct">16.7%</span></div>
+              <div class="bar-row"><span class="bar-lbl">Peru</span><div class="bar-track"><div class="bar-fill" data-width="7.2"></div></div><span class="bar-pct">7.2%</span></div>
+              <div class="bar-row"><span class="bar-lbl">Colombia</span><div class="bar-track"><div class="bar-fill" data-width="4.9"></div></div><span class="bar-pct">4.9%</span></div>
+              <div class="bar-row"><span class="bar-lbl">Ecuador</span><div class="bar-track"><div class="bar-fill" data-width="3.8"></div></div><span class="bar-pct">3.8%</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-panel glass">
+          <div class="demo-panel-head">
+            <i class="fab fa-instagram"></i>
+            <h3 data-es="Audiencia Instagram">Instagram Audience</h3>
+          </div>
+          <div class="demo-block">
+            <h4 data-es="Distribuci&oacute;n de Edad">Age Distribution</h4>
+            <div class="bar-list">
+              <div class="bar-row"><span class="bar-lbl">18-24</span><div class="bar-track"><div class="bar-fill" data-width="48.5"></div></div><span class="bar-pct">48.5%</span></div>
+              <div class="bar-row"><span class="bar-lbl">25-34</span><div class="bar-track"><div class="bar-fill" data-width="43.4"></div></div><span class="bar-pct">43.4%</span></div>
+              <div class="bar-row"><span class="bar-lbl">35-44</span><div class="bar-track"><div class="bar-fill" data-width="4.7"></div></div><span class="bar-pct">4.7%</span></div>
+              <div class="bar-row"><span class="bar-lbl">45-54</span><div class="bar-track"><div class="bar-fill" data-width="2"></div></div><span class="bar-pct">2.0%</span></div>
+            </div>
+          </div>
+          <div class="demo-block">
+            <h4 data-es="G&eacute;nero">Gender</h4>
+            <div class="gender-split">
+              <div class="gender-bar-women" style="width:56%"><span>Female 56%</span></div>
+              <div class="gender-bar-men" style="width:43%"><span>Male 43%</span></div>
+            </div>
+          </div>
+          <div class="demo-block">
+            <h4 data-es="Desglose de Alcance">Reach Breakdown</h4>
+            <div class="reach-row">
+              <div class="reach-item">
+                <div class="reach-circle">
+                  <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#333" stroke-width="3"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#cc1a00" stroke-width="3" stroke-dasharray="86.4 13.6" stroke-dashoffset="25" class="donut-arc"/></svg>
+                  <span>86.4%</span>
+                </div>
+                <p data-es="No-seguidores">Non-followers</p>
+              </div>
+              <div class="reach-item">
+                <div class="reach-circle">
+                  <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#333" stroke-width="3"/><circle cx="18" cy="18" r="15.9" fill="none" stroke="#666" stroke-width="3" stroke-dasharray="13.6 86.4" stroke-dashoffset="25" class="donut-arc"/></svg>
+                  <span>13.6%</span>
+                </div>
+                <p data-es="Seguidores">Followers</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="annotation" style="--rot:-1deg;text-align:center;margin-top:1.5rem;display:block;"
+          data-es="El 86.4% NO son seguidores, el alcance org&aacute;nico es el producto.">
+          86.4% are NOT followers - organic reach is the product.
+        </p>
+      </div>
+    </div>
+
+    <!-- PAGE 7: BODY STATS (Numéro Homme style — Gemini edit) -->
+    <div class="mag-page p-img" id="p7" data-chapter="ch01">
+      <img src="assets/images/1781847786836.png" class="page-full-img" alt="Christian Prieto Stats">
+      <div class="p-img-overlay">
+        <div class="page-corner" aria-hidden="true" style="color:rgba(0,0,0,0.2)">Issue 001 &nbsp;&middot;&nbsp; p.07</div>
+      </div>
+    </div>
+
+    <!-- PAGE 8: CORE DIVISION (Fullt Collective brand) -->
+    <div class="mag-page p-brand-core" id="p8" data-chapter="ch03">
+      <div class="bmag-top">
+        <div class="bmag-dots-row" aria-hidden="true">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</div>
+        <div class="bmag-title-bar">
+          <h2 class="bmag-brand-name">CORE<br>DIVISION</h2>
+          <div class="bmag-title-meta">
+            <span class="bmag-url">https://coredivision.com</span>
+            <span class="bmag-edition">Nr.1 Spring 2024</span>
+          </div>
+        </div>
+        <div class="bmag-red-bar" aria-hidden="true"></div>
+      </div>
+      <div class="bmag-body">
+        <div class="bmag-side bmag-side--left">
+          <div class="bmag-callout-item">
+            <strong class="bmag-callout-head" data-es="ESTILO STREETWEAR">STREETWEAR STYLE</strong>
+            <p class="bmag-callout-body" data-es="Streetwear premium definido por gr&aacute;ficos atrevidos y herencia atl&eacute;tica.">Premium streetwear defined by bold graphics and athletic heritage. Made for the streets, worn by the culture.</p>
+          </div>
+          <div class="bmag-callout-item">
+            <strong class="bmag-callout-head" data-es="CONTENIDO ORG&Aacute;NICO">ORGANIC CONTENT</strong>
+            <p class="bmag-callout-body" data-es="Integraci&oacute;n aut&eacute;ntica en narrativas de estilo de vida urbano.">Authentic integration into urban lifestyle storytelling, reaching engaged audiences across Spain and Latin America.</p>
+          </div>
+        </div>
+        <div class="bmag-photo-wrap">
+          <img src="assets/images/core-division-1.jpg" alt="Christian Prieto x Core Division" class="bmag-photo-img">
+          <div class="bmag-photo-overlay">
+            <span class="annotation" style="--rot:3deg" data-es="*2.8M vistas no mienten.">*2.8M views don't lie.</span>
+          </div>
+        </div>
+        <div class="bmag-side bmag-side--right">
+          <div class="bmag-callout-item bmag-callout-item--feature">
+            <strong class="bmag-callout-stat">2.8M</strong>
+            <p class="bmag-callout-body" data-es="Vistas en el video de colaboraci&oacute;n top">Top video views in a single collaboration</p>
+          </div>
+          <div class="bmag-callout-item">
+            <strong class="bmag-callout-head">SPRING 2024</strong>
+            <p class="bmag-callout-body" data-es="La mejor collab que hemos tenido.">The best collab we ever had. See how we built it and why it worked.</p>
+          </div>
+          <span class="bmag-collab-tag">TikTok Instagram Reels</span>
+        </div>
+      </div>
+      <div class="bmag-footer">
+        <div class="bmag-barcode" id="bmagBarcode1" aria-hidden="true"></div>
+        <span class="bmag-footer-text">Content available for brand collaboration <a href="#" data-page-link="9">Get in touch</a></span>
+        <span class="bmag-page-num">p.08</span>
+      </div>
+    </div>
+
+    <!-- PAGE 9: DEAR BRANDS (CHRISTAIN- collage — Gemini edit) -->
+    <div class="mag-page p-img" id="p9" data-chapter="ch03">
+      <img src="assets/images/1781902919581.png" class="page-full-img" alt="CHRISTAIN- Media Kit">
+      <div class="p-img-overlay">
+        <div class="page-corner" aria-hidden="true">Issue 001 &nbsp;&middot;&nbsp; p.09</div>
+        <a href="mailto:chrttprieto@gmail.com" class="p-img-cta" data-es="COLABOREMOS">LET'S COLLAB</a>
+      </div>
+    </div>
+
+    <!-- PAGE 10: CONTACT (Vogue Nigeria luxury style) -->
+    <div class="mag-page p-contact-vogue" id="p10" data-chapter="ch05">
+      <img src="assets/images/street-hoodie.jpg" class="vogue-photo" alt="Christian Prieto">
+      <div class="vogue-overlay"></div>
+      <div class="vogue-content">
+        <h1 class="vogue-title">CHRISTAIN-</h1>
+        <span class="vogue-sub">ISSUE 001</span>
+        <span class="vogue-year">2025</span>
+        <div class="vogue-left">
+          <p class="vogue-teaser" data-es="LA GU&Iacute;A DEFINITIVA A TU PR&Oacute;XIMA COLABORACI&Oacute;N">THE ULTIMATE<br>GUIDE TO YOUR<br>NEXT COLLAB</p>
+          <p class="vogue-teaser" data-es="LEGADO MODERNO: DISE&Ntilde;OS IC&Oacute;NICOS">MODERN LEGACY:<br>ICONIC DESIGNS</p>
+          <p class="vogue-teaser" data-es="RESULTADOS ATREVIDOS">BOLD RESULTS</p>
+        </div>
+        <div class="vogue-right">
+          <h2 class="vogue-feature">
+            <span data-es="VEN">COME</span><br>
+            <span data-es="Y">AND</span><br>
+            <span class="vogue-red" data-es="ROBA UNA MARCA.">STEAL A BRAND.</span>
+          </h2>
+          <p class="vogue-feature-sub" data-es="EL ASCENSO DEL PR&Oacute;XIMO &Iacute;CONO DE ESTILO DE BARCELONA">THE RISE OF BARCELONA'S<br>NEXT STYLE ICON</p>
+        </div>
+        <div class="vogue-footer">
+          <div class="bmag-barcode" id="contactBarcode" aria-hidden="true"></div>
+          <span class="bmag-slot-tag">ORIGINAL</span>
+          <div class="vogue-contact-links">
+            <a href="mailto:chrttprieto@gmail.com" class="vogue-cta">chrttprieto@gmail.com</a>
+            <a href="mailto:chrttprieto@gmail.com" class="btn-primary" data-es="HAGAMOS ALGO">LET'S MAKE SOMETHING</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.magazine-book -->
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
