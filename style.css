@@ -348,13 +348,15 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 }
 .img-parallax-top { object-position: center top; }
 
-/* About Me — full image, no crop */
-.img-break-about {
+/* Full-display portrait images — no crop, natural height */
+.img-break-about,
+.img-natural {
   position: relative;
   width: 100%;
   background: #000;
 }
-.img-break-about > img {
+.img-break-about > img,
+.img-natural > img {
   width: 100%;
   height: auto;
   display: block;
