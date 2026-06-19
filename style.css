@@ -765,16 +765,15 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 
 .iphone-modal-bg {
   position: absolute; inset: 0;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(12px);
+  background: #000;
 }
 
 .iphone-wrapper {
   position: relative; z-index: 1;
-  transform: scale(0.85) translateY(40px);
+  transform: perspective(1000px) rotateX(6deg) scale(0.85) translateY(40px);
   transition: transform 0.5s var(--ease-out);
 }
-.iphone-modal.open .iphone-wrapper { transform: scale(1) translateY(0); }
+.iphone-modal.open .iphone-wrapper { transform: perspective(1000px) rotateX(3deg) scale(1) translateY(0); }
 
 .iphone-dismiss {
   position: absolute; top: -2.5rem; right: 0;
@@ -791,11 +790,23 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   background: #1c1c1e;
   border-radius: 52px;
   box-shadow:
-    0 0 0 1.5px #3a3a3c,
-    0 0 0 3px #1c1c1e,
-    0 0 0 4px rgba(255,255,255,0.1),
-    0 50px 100px rgba(0,0,0,0.95),
-    inset 0 0 0 1px rgba(255,255,255,0.06);
+    0 0 0 1px rgba(255,255,255,0.18),
+    0 0 0 3px #2a2a2c,
+    0 0 0 4.5px rgba(255,255,255,0.15),
+    0 60px 120px rgba(0,0,0,1),
+    0 20px 40px rgba(0,0,0,0.8),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+/* Subtle reflection under iPhone on pure-black bg */
+.iphone-device::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: 10%; right: 10%;
+  height: 60px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(12px);
+  pointer-events: none;
 }
 
 /* Physical buttons */
@@ -928,15 +939,14 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 
 .collab-backdrop {
   position: absolute; inset: 0;
-  background: rgba(4,4,8,0.92);
-  backdrop-filter: blur(20px);
+  background: rgba(0,0,0,0.97);
 }
 
 .collab-container {
   position: relative; z-index: 1;
   width: min(520px, 94vw);
-  background: rgba(18,18,22,0.95);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #000;
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 40px 80px rgba(0,0,0,0.8);
@@ -960,7 +970,10 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 .collab-step-inner { padding: 3rem 2.5rem; }
 @media (max-width: 480px) { .collab-step-inner { padding: 2rem 1.5rem; } }
 
-.collab-eyebrow { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--purple); font-weight: 600; }
+.collab-eyebrow {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--purple); font-weight: 600;
+}
 
 .collab-headline {
   font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,5vw,2.5rem); font-weight: 900; line-height: 1.1;
@@ -977,6 +990,57 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .collab-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,92,246,0.4); }
+
+/* ── Step 0 intro: "Let's build something." SF Pro style ── */
+.collab-step[data-step="0"] .collab-step-inner {
+  padding: 3.5rem 2.5rem;
+}
+.collab-step[data-step="0"] .collab-eyebrow {
+  font-family: var(--apple-font);
+  color: #666;
+  letter-spacing: 0.12em;
+}
+.collab-step[data-step="0"] .collab-headline {
+  font-family: var(--apple-font);
+  font-size: clamp(2.4rem, 8vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  margin: 0.8rem 0 1.2rem;
+}
+.collab-step[data-step="0"] .collab-headline em {
+  font-style: normal;
+  background: none;
+  -webkit-text-fill-color: #fff;
+  color: #fff;
+}
+.collab-step[data-step="0"] .collab-body {
+  font-family: var(--apple-font);
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+.collab-step[data-step="0"] .collab-cta-btn {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.28);
+  border-radius: 100px;
+  font-family: var(--apple-font);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+  padding: 0.78rem 2rem;
+  color: #fff;
+  box-shadow: none;
+}
+.collab-step[data-step="0"] .collab-cta-btn:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.5);
+  transform: none;
+  box-shadow: none;
+}
 
 .collab-step-num { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; font-weight: 600; }
 
