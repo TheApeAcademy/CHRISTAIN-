@@ -307,11 +307,11 @@ function initIphone() {
       switch (action) {
         case 'phone':
           closeIphone();
-          window.location.href = 'tel:+34000000000';
+          window.location.href = 'tel:+34631537136';
           break;
         case 'whatsapp':
           closeIphone();
-          window.open('https://wa.me/34000000000', '_blank');
+          window.open('https://wa.me/34631537136', '_blank');
           break;
         case 'email':
           closeIphone();
@@ -442,7 +442,7 @@ Best regards`
   const emailSubject = encodeURIComponent(`Collab Inquiry – ${collabAnswers.category || 'Brand'}`);
 
   const waEl = document.getElementById('collabSendWA');
-  if (waEl) waEl.href = `https://wa.me/34000000000?text=${msg}`;
+  if (waEl) waEl.href = `https://wa.me/34631537136?text=${msg}`;
 
   const emailEl = document.getElementById('collabSendEmail');
   if (emailEl) emailEl.href = `mailto:chrttprieto@gmail.com?subject=${emailSubject}&body=${emailBody}`;
