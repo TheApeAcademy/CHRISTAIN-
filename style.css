@@ -682,9 +682,28 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 .lw-cta-pill .lw-stat-num { color: var(--purple); }
 
 /* ── 12. QUICK STATS STRIP ──────────────────────────────── */
+.quick-stats-wrap {
+  background: var(--bg);
+  padding-top: 2.5rem;
+}
+.qs-heading,
+.stats-section-heading {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 0 2rem;
+}
+.stats-section-heading {
+  background: var(--bg);
+  padding: 2.5rem 2rem 0;
+}
 .quick-stats-strip {
   background: var(--bg);
-  padding: 2.8rem 2rem;
+  padding: 1.5rem 2rem 2.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
