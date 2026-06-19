@@ -679,7 +679,48 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 }
 .lw-cta-pill .lw-stat-num { color: var(--purple); }
 
-/* ── 12. BRANDS GRID ─────────────────────────────────────── */
+/* ── 12. QUICK STATS STRIP ──────────────────────────────── */
+.quick-stats-strip {
+  background: var(--bg);
+  padding: 2.8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+}
+.qs-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+.qs-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+.qs-lbl {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+}
+.qs-sep {
+  font-size: 1.5rem;
+  color: var(--text-dim);
+  line-height: 1;
+  padding-bottom: 0.75rem;
+}
+@media (max-width: 480px) {
+  .qs-sep { display: none; }
+  .quick-stats-strip { gap: 1.5rem 2rem; }
+}
+
+/* ── 13. BRANDS GRID ─────────────────────────────────────── */
 .section-brands { padding: 8rem 0 0; }
 .section-brands .container { margin-bottom: 0; }
 
