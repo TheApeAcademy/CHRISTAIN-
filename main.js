@@ -455,6 +455,7 @@ function initCollab() {
 
   // Open triggers
   document.getElementById('collabTriggerAbout')?.addEventListener('click', openCollab);
+  document.getElementById('collabTriggerWidget')?.addEventListener('click', openCollab);
 
   // Close
   closeBtn.addEventListener('click', closeCollab);
