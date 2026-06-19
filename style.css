@@ -284,6 +284,7 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   display: block;
 }
 .img-break-portrait { height: 70vh; }
+.img-break-about { height: 100vh; }
 .img-parallax {
   width: 100%; height: 120%;
   object-fit: cover;
@@ -292,6 +293,19 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   will-change: transform;
   display: block;
 }
+.img-parallax-top { object-position: center top; }
+
+/* About overlay — collab button floats above the About image */
+.about-img-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 3rem 2rem 2.5rem;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);
+  pointer-events: none;
+}
+.about-img-overlay .collab-trigger-btn { pointer-events: all; }
 
 /* ── 10. APPLE STATS ─────────────────────────────────────── */
 .section-apple-stats {
