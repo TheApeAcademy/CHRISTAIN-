@@ -253,6 +253,45 @@ body {
   z-index: 1;
 }
 
+/* ── IMAGE-BASED PAGES ────────────────────────────────── */
+.p-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+}
+.page-full-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+  z-index: 1;
+}
+.p-img-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.p-img-overlay > * { pointer-events: all; }
+.p-img-cta {
+  position: absolute;
+  bottom: 3rem;
+  right: 2rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: #f5f0e8;
+  background: var(--ch-accent);
+  padding: 0.75rem 1.5rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+}
+.p-img-cta:hover { opacity: 0.85; }
+
 /* ── 8. FLIP BUTTONS ──────────────────────────────────── */
 .flip-btn {
   position: fixed;
