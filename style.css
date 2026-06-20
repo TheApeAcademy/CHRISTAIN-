@@ -932,6 +932,17 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   transition: box-shadow 0.35s var(--ease-out);
 }
 
+/* Odd cards: glass fades up from bottom so outfit is visible at top */
+.brand-collab-card:nth-child(odd) .bcc-glass-layer {
+  justify-content: flex-end;
+  background: linear-gradient(to bottom, transparent 28%, rgba(8,8,18,0.72) 60%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 54%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 54%);
+}
+.brand-collab-card:nth-child(odd) .bcc-content { flex: 0; }
+.brand-collab-card:nth-child(odd) .bcc-cat,
+.brand-collab-card:nth-child(odd) .bcc-logo-text { display: none; }
+
 /* ── EVEN CARDS: frosted glass, photo lives inside ─────────── */
 .brand-collab-card:nth-child(even) {
   overflow: hidden;
