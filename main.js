@@ -340,8 +340,19 @@ function initIphone() {
           break;
         case 'magazine':
           closeIphone();
-          // Magazine coming soon - scroll to contact
           document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+          break;
+        case 'safari':
+          closeIphone();
+          window.open('https://instagram.com/chrtt.prieto', '_blank');
+          break;
+        case 'youtube':
+          closeIphone();
+          window.open('https://youtube.com/@chrttprieto', '_blank');
+          break;
+        case 'music':
+        case 'camera':
+          closeIphone();
           break;
       }
     });

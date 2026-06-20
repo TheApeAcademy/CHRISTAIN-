@@ -175,7 +175,23 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 }
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .hero-visual { order: -1; display: flex; justify-content: center; }
+  /* Break photo card out of container so glass bar hits screen edges */
+  .hero-visual {
+    order: -1;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+  .hero-photo-card {
+    width: 100%;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
 }
 
 /* Orbs */
@@ -716,14 +732,15 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 }
 .stats-section-heading {
   font-family: var(--apple-font);
-  font-size: clamp(1rem, 3vw, 1.4rem);
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: clamp(2.6rem, 8vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
+  color: #fff;
   text-align: center;
   background: var(--bg);
-  padding: 3rem 2rem 0.5rem;
+  padding: 3rem 2rem 3rem;
+  line-height: 1;
 }
 .quick-stats-strip {
   background: var(--bg);
@@ -1157,9 +1174,10 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   border-radius: 42px;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 20% 10%, rgba(100,60,200,0.45) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 90%, rgba(200,60,120,0.35) 0%, transparent 55%),
-    linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f0f23 100%);
+    radial-gradient(ellipse at 22% 28%, rgba(70,50,210,0.58) 0%, transparent 48%),
+    radial-gradient(ellipse at 78% 68%, rgba(185,50,110,0.44) 0%, transparent 48%),
+    radial-gradient(ellipse at 55% 5%,  rgba(30,80,220,0.28) 0%, transparent 35%),
+    linear-gradient(178deg, #03050e 0%, #07081a 35%, #0c061e 65%, #100312 100%);
 }
 
 /* Dynamic Island */
@@ -1187,16 +1205,39 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 }
 .iphone-date-widget {
   display: flex; flex-direction: column; align-items: center;
-  padding: 1.5rem 0 1rem;
+  padding: 1.8rem 0 0.8rem;
 }
-.iphone-day { font: 300 13px/1 var(--apple-font); color: rgba(255,255,255,0.65); letter-spacing: 0.02em; }
-.iphone-date-num { font: 100 52px/1 var(--apple-font); color: #fff; letter-spacing: -0.03em; margin-top: 2px; }
+.iphone-day {
+  font: 500 11px/1 var(--apple-font);
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.iphone-date-num {
+  font: 100 62px/1 var(--apple-font);
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin-top: 2px;
+}
 
 .iphone-apps-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 16px; padding: 0 14px;
+  gap: 14px 8px; padding: 0 12px;
   flex: 1;
+  align-content: start;
 }
+
+/* Page dots */
+.iphone-page-dots {
+  flex-shrink: 0;
+  display: flex; justify-content: center; align-items: center;
+  gap: 5px; padding: 8px 0 6px;
+}
+.iphone-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.28);
+}
+.iphone-dot-active { background: rgba(255,255,255,0.88); }
 
 .iphone-app {
   display: flex; flex-direction: column; align-items: center; gap: 5px;
