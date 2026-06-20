@@ -2,6 +2,36 @@
    CHRISTIAN PRIETO PORTFOLIO  ·  main.js
    ───────────────────────────────────────────────────────── */
 
+/* ── PWA SERVICE WORKER ───────────────────────────────────── */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+
+/* ── SPLASH SCREEN ────────────────────────────────────────── */
+(function initSplash() {
+  const splash = document.getElementById('splash');
+  if (!splash) return;
+
+  const TOTAL_DURATION = 3200;
+
+  function dismiss() {
+    splash.classList.add('splash-exit');
+    setTimeout(() => {
+      splash.style.display = 'none';
+      document.body.style.overflow = '';
+    }, 700);
+  }
+
+  document.body.style.overflow = 'hidden';
+  setTimeout(dismiss, TOTAL_DURATION);
+
+  splash.addEventListener('click', () => {
+    if (parseFloat(getComputedStyle(splash).opacity) > 0.3) dismiss();
+  }, { once: true });
+})();
+
 /* ── SUPABASE CONFIG ──────────────────────────────────────── */
 const SUPABASE_URL = 'https://gtnnzhphexfjblujspmr.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd0bm56aHBoZXhmamJsdWpzcG1yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIyNzU2NzUsImV4cCI6MjA4Nzg1MTY3NX0.a7zi2U0VeTFpLNQu1Csh-VwjqwaVlKwnbj7T1C27kak';
