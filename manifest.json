@@ -1,0 +1,33 @@
+{
+  "name": "Christain Prieto · Digital Creator",
+  "short_name": "chrtt.prieto",
+  "description": "Fashion & Lifestyle creator based in Barcelona. Brand collaborations, content creation.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "categories": ["lifestyle", "portfolio"],
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

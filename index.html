@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Christian Prieto — Digital Creator. Fashion, Lifestyle & Travel. 35.7K TikTok · 9.6M Likes · 516K monthly views.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Christian Prieto — Digital Creator. Fashion, Lifestyle & Travel. 35.7K TikTok · 9.6M Likes · 516K monthly views. Available for brand collaborations.">
+  <meta property="og:title" content="Christian Prieto · Digital Creator">
+  <meta property="og:description" content="Fashion & Lifestyle creator based in Barcelona. 35.7K TikTok followers, 9.6M likes, 516K monthly views.">
+  <meta property="og:type" content="website">
   <title>Christian Prieto · Digital Creator</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#080808">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="chrtt.prieto">
+  <link rel="apple-touch-icon" href="/assets/icons/icon-512.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/icon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/icon-192.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +27,43 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- ─── SPLASH SCREEN ────────────────────────────────────── -->
+  <div id="splash" aria-hidden="true">
+    <div class="splash-orb splash-orb-1"></div>
+    <div class="splash-orb splash-orb-2"></div>
+    <div class="splash-center">
+      <div class="splash-logo" id="splashLogo">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="spl-g" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#a855f7"/>
+              <stop offset="50%" stop-color="#d946ef"/>
+              <stop offset="100%" stop-color="#ec4899"/>
+            </linearGradient>
+            <radialGradient id="spl-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#a855f7" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="60" cy="60" r="55" fill="url(#spl-glow)"/>
+          <circle cx="60" cy="60" r="52" fill="none" stroke="url(#spl-g)" stroke-width="0.6" opacity="0.3"/>
+          <text x="60" y="78" font-family="Georgia,serif" font-size="58" font-weight="900"
+                text-anchor="middle" fill="url(#spl-g)" letter-spacing="-3">CP</text>
+        </svg>
+        <div class="splash-ring"></div>
+      </div>
+      <div class="splash-text-block">
+        <p class="splash-welcome" id="splashWelcome">Welcome to</p>
+        <h1 class="splash-name" id="splashName">
+          <span class="sn-word" id="snChristain">CHRISTAIN</span>
+          <span class="sn-word" id="snPrieto">PRIETO</span>
+        </h1>
+        <p class="splash-sub" id="splashSub">PORTFOLIO</p>
+      </div>
+    </div>
+    <div class="splash-bar" id="splashBar"><div class="splash-bar-fill"></div></div>
+  </div>
 
   <!-- ─── NAV ─────────────────────────────────────────────── -->
   <nav id="nav" role="navigation" aria-label="Main navigation">
