@@ -198,11 +198,18 @@ function initParallax() {
 }
 
 /* ── BRAND COLLAB CAROUSEL ────────────────────────────────── */
-function openBrandGallery() {
+function openBrandGallery(brand) {
   const overlay = document.getElementById('galleryOverlay');
-  if (overlay) {
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
+  if (!overlay) return;
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  /* Activate the matching filter tab */
+  if (brand) {
+    const tabs  = overlay.querySelectorAll('.gf-tab');
+    const items = overlay.querySelectorAll('.gallery-item');
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.filter === brand));
+    items.forEach(it => it.classList.toggle('gf-hidden', it.dataset.brand !== brand));
   }
 }
 
@@ -287,6 +294,20 @@ function initGallery() {
   fabBtn.addEventListener('click', openGallery);
   closeBtn.addEventListener('click', closeGallery);
   overlay.addEventListener('keydown', e => { if (e.key === 'Escape') closeGallery(); });
+
+  /* Brand filter tabs */
+  const filterTabs  = overlay.querySelectorAll('.gf-tab');
+  const galleryItems = overlay.querySelectorAll('.gallery-item');
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      galleryItems.forEach(item => {
+        item.classList.toggle('gf-hidden', filter !== 'all' && item.dataset.brand !== filter);
+      });
+    });
+  });
 
   // Lightbox
   const openLightbox = (idx) => {

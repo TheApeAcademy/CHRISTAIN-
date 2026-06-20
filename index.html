@@ -350,20 +350,30 @@
 
       <div class="brand-collab-track" id="brandTrack">
 
-        <div class="brand-collab-card" onclick="openBrandGallery()">
-          <div class="bcc-shine"></div>
-          <div class="bcc-content">
-            <span class="bcc-cat">Youth Fashion · Lifestyle</span>
-            <div class="bcc-logo-text">P&amp;B</div>
-            <h3 class="bcc-name">PULL &amp; BEAR</h3>
-            <p class="bcc-desc">Youth fashion campaigns reaching Gen-Z audiences across TikTok and Instagram. Authentic street styling from Barcelona.</p>
-            <div class="bcc-tags"><span>TikTok</span><span>Instagram</span><span>Street</span></div>
+        <!-- ODD: transparent glass — photo overflows card bounds -->
+        <div class="brand-collab-card" data-brand="pull-bear" onclick="openBrandGallery('pull-bear')">
+          <div class="bcc-photo-frame">
+            <img src="assets/brands/pull-bear.jpg" alt="Pull &amp; Bear shoot" loading="lazy">
           </div>
-          <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
+          <div class="bcc-glass-layer">
+            <div class="bcc-shine"></div>
+            <div class="bcc-content">
+              <span class="bcc-cat">Youth Fashion · Lifestyle</span>
+              <div class="bcc-logo-text">P&amp;B</div>
+              <h3 class="bcc-name">PULL &amp; BEAR</h3>
+              <p class="bcc-desc">Youth fashion campaigns reaching Gen-Z audiences across TikTok and Instagram. Authentic street styling from Barcelona.</p>
+              <div class="bcc-tags"><span>TikTok</span><span>Instagram</span><span>Street</span></div>
+            </div>
+            <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
+          </div>
         </div>
 
-        <div class="brand-collab-card" onclick="openBrandGallery()">
+        <!-- EVEN: frosted glass — photo lives inside card -->
+        <div class="brand-collab-card" data-brand="eme-studio" onclick="openBrandGallery('eme-studio')">
           <div class="bcc-shine"></div>
+          <div class="bcc-photo-inner">
+            <img src="assets/brands/eme-studio.jpg" alt="EME Studio shoot" loading="lazy">
+          </div>
           <div class="bcc-content">
             <span class="bcc-cat">Independent · Luxury</span>
             <div class="bcc-logo-text">EME</div>
@@ -374,20 +384,30 @@
           <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
         </div>
 
-        <div class="brand-collab-card" onclick="openBrandGallery()">
-          <div class="bcc-shine"></div>
-          <div class="bcc-content">
-            <span class="bcc-cat">Streetwear · UK</span>
-            <div class="bcc-logo-text">SCUF</div>
-            <h3 class="bcc-name">SCUFFERS</h3>
-            <p class="bcc-desc">UK streetwear with raw urban grit. Exclusive styling shoots and organic content integration across social platforms.</p>
-            <div class="bcc-tags"><span>TikTok</span><span>Organic</span><span>Urban</span></div>
+        <!-- ODD -->
+        <div class="brand-collab-card" data-brand="scuffers" onclick="openBrandGallery('scuffers')">
+          <div class="bcc-photo-frame">
+            <img src="assets/brands/scuffers.jpg" alt="Scuffers shoot" loading="lazy">
           </div>
-          <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
+          <div class="bcc-glass-layer">
+            <div class="bcc-shine"></div>
+            <div class="bcc-content">
+              <span class="bcc-cat">Streetwear · UK</span>
+              <div class="bcc-logo-text">SCUF</div>
+              <h3 class="bcc-name">SCUFFERS</h3>
+              <p class="bcc-desc">UK streetwear with raw urban grit. Exclusive styling shoots and organic content integration across social platforms.</p>
+              <div class="bcc-tags"><span>TikTok</span><span>Organic</span><span>Urban</span></div>
+            </div>
+            <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
+          </div>
         </div>
 
-        <div class="brand-collab-card" onclick="openBrandGallery()">
+        <!-- EVEN -->
+        <div class="brand-collab-card" data-brand="nude-project" onclick="openBrandGallery('nude-project')">
           <div class="bcc-shine"></div>
+          <div class="bcc-photo-inner">
+            <img src="assets/brands/nude-project.jpg" alt="Nude Project shoot" loading="lazy">
+          </div>
           <div class="bcc-content">
             <span class="bcc-cat">Sustainable · Fashion</span>
             <div class="bcc-logo-text">NP</div>
@@ -398,20 +418,30 @@
           <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
         </div>
 
-        <div class="brand-collab-card" onclick="openBrandGallery()">
-          <div class="bcc-shine"></div>
-          <div class="bcc-content">
-            <span class="bcc-cat">Premium · Streetwear</span>
-            <div class="bcc-logo-text">CC</div>
-            <h3 class="bcc-name">COLD CULTURE</h3>
-            <p class="bcc-desc">Premium cold-weather brand with a fashion-forward edge. Urban shoots across Barcelona's most iconic locations.</p>
-            <div class="bcc-tags"><span>Editorial</span><span>Reels</span><span>Premium</span></div>
+        <!-- ODD -->
+        <div class="brand-collab-card" data-brand="cold-culture" onclick="openBrandGallery('cold-culture')">
+          <div class="bcc-photo-frame">
+            <img src="assets/brands/cold-culture.jpg" alt="Cold Culture shoot" loading="lazy">
           </div>
-          <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
+          <div class="bcc-glass-layer">
+            <div class="bcc-shine"></div>
+            <div class="bcc-content">
+              <span class="bcc-cat">Premium · Streetwear</span>
+              <div class="bcc-logo-text">CC</div>
+              <h3 class="bcc-name">COLD CULTURE</h3>
+              <p class="bcc-desc">Premium cold-weather brand with a fashion-forward edge. Urban shoots across Barcelona's most iconic locations.</p>
+              <div class="bcc-tags"><span>Editorial</span><span>Reels</span><span>Premium</span></div>
+            </div>
+            <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
+          </div>
         </div>
 
-        <div class="brand-collab-card" onclick="openBrandGallery()">
+        <!-- EVEN -->
+        <div class="brand-collab-card" data-brand="zara" onclick="openBrandGallery('zara')">
           <div class="bcc-shine"></div>
+          <div class="bcc-photo-inner">
+            <img src="assets/brands/zara.jpg" alt="Zara shoot" loading="lazy">
+          </div>
           <div class="bcc-content">
             <span class="bcc-cat">High-Street · Global</span>
             <div class="bcc-logo-text">ZRA</div>
@@ -605,50 +635,40 @@
       <span class="gallery-title"><i class="fas fa-images"></i> Gallery</span>
       <button class="gallery-close" id="galleryClose" aria-label="Close gallery">✕</button>
     </div>
+    <!-- Brand filter tabs -->
+    <div class="gallery-filters" id="galleryFilters">
+      <button class="gf-tab active" data-filter="all">All</button>
+      <button class="gf-tab" data-filter="pull-bear">Pull &amp; Bear</button>
+      <button class="gf-tab" data-filter="eme-studio">EME Studio</button>
+      <button class="gf-tab" data-filter="scuffers">Scuffers</button>
+      <button class="gf-tab" data-filter="nude-project">Nude Project</button>
+      <button class="gf-tab" data-filter="cold-culture">Cold Culture</button>
+      <button class="gf-tab" data-filter="zara">Zara</button>
+    </div>
     <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item" data-index="0" data-brand="Palm Angels">
-        <img src="assets/images/pink-stars.jpg" alt="Palm Angels collab" loading="lazy">
-        <div class="gallery-item-caption">Palm Angels</div>
+      <div class="gallery-item" data-index="0" data-brand="pull-bear">
+        <img src="assets/brands/pull-bear.jpg" alt="Pull &amp; Bear collab" loading="lazy">
+        <div class="gallery-item-caption">Pull &amp; Bear</div>
       </div>
-      <div class="gallery-item" data-index="1" data-brand="CDG">
-        <img src="assets/images/dressed-to-kill.jpg" alt="CDG collab" loading="lazy">
-        <div class="gallery-item-caption">Comme des Garçons</div>
+      <div class="gallery-item" data-index="1" data-brand="eme-studio">
+        <img src="assets/brands/eme-studio.jpg" alt="EME Studio collab" loading="lazy">
+        <div class="gallery-item-caption">EME Studio</div>
       </div>
-      <div class="gallery-item" data-index="2" data-brand="Editorial">
-        <img src="assets/images/portrait-bw.jpg" alt="Editorial portrait" loading="lazy">
-        <div class="gallery-item-caption">Editorial</div>
+      <div class="gallery-item" data-index="2" data-brand="scuffers">
+        <img src="assets/brands/scuffers.jpg" alt="Scuffers collab" loading="lazy">
+        <div class="gallery-item-caption">Scuffers</div>
       </div>
-      <div class="gallery-item" data-index="3" data-brand="Profile">
-        <img src="assets/images/instagram-profile.jpg" alt="Instagram profile" loading="lazy">
-        <div class="gallery-item-caption">@chrtt.prieto</div>
+      <div class="gallery-item" data-index="3" data-brand="nude-project">
+        <img src="assets/brands/nude-project.jpg" alt="Nude Project collab" loading="lazy">
+        <div class="gallery-item-caption">Nude Project</div>
       </div>
-      <div class="gallery-item" data-index="4" data-brand="Core Division">
-        <img src="assets/images/core-division-1.jpg" alt="Core Division collab" loading="lazy">
-        <div class="gallery-item-caption">Core Division</div>
+      <div class="gallery-item" data-index="4" data-brand="cold-culture">
+        <img src="assets/brands/cold-culture.jpg" alt="Cold Culture collab" loading="lazy">
+        <div class="gallery-item-caption">Cold Culture</div>
       </div>
-      <div class="gallery-item" data-index="5" data-brand="Core Division">
-        <img src="assets/images/core-division-2.jpg" alt="Core Division collab" loading="lazy">
-        <div class="gallery-item-caption">Core Division</div>
-      </div>
-      <div class="gallery-item" data-index="6" data-brand="Zara">
-        <img src="assets/images/street-hoodie.jpg" alt="Zara streetwear" loading="lazy">
+      <div class="gallery-item" data-index="5" data-brand="zara">
+        <img src="assets/brands/zara.jpg" alt="Zara collab" loading="lazy">
         <div class="gallery-item-caption">Zara</div>
-      </div>
-      <div class="gallery-item" data-index="7" data-brand="Content">
-        <img src="assets/images/1781847786836.png" alt="Content" loading="lazy">
-        <div class="gallery-item-caption">Content</div>
-      </div>
-      <div class="gallery-item" data-index="8" data-brand="Magazine">
-        <img src="assets/images/magazine-editorial.png" alt="Magazine Editorial" loading="lazy">
-        <div class="gallery-item-caption">Magazine</div>
-      </div>
-      <div class="gallery-item" data-index="9" data-brand="Content">
-        <img src="assets/images/1781902919581.png" alt="Content" loading="lazy">
-        <div class="gallery-item-caption">Content</div>
-      </div>
-      <div class="gallery-item" data-index="10" data-brand="Content">
-        <img src="assets/images/1781903315853.png" alt="Content" loading="lazy">
-        <div class="gallery-item-caption">Content</div>
       </div>
     </div>
 
