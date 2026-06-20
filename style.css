@@ -225,13 +225,13 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
     border: 1px solid var(--border) !important;
     margin: 0 auto;
   }
-  /* Glass bar: true 100vw bleed using centered-absolute trick */
+  /* Glass bar: use massive bleed clipped by body overflow-x:hidden — centering-proof */
   .hero-glass-bar {
-    left: 50%;
-    right: auto;
-    width: 100vw;
-    transform: translateX(-50%);
+    left: -50vw;
+    right: -50vw;
     border-radius: 0;
+    width: auto;
+    transform: none;
   }
   /* Re-add padding only to the text block */
   .hero-text {
@@ -1280,168 +1280,122 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 }
 .iphone-dismiss:hover { color: #fff; }
 
-/* iPhone Device Body */
+/* iPhone Device Body — compact size */
 .iphone-device {
   position: relative;
-  width: 345px;
-  height: 750px;
+  width: 295px;
+  height: 608px;
   background: linear-gradient(165deg, #2c2c2e 0%, #1c1c1e 50%, #161618 100%);
-  border-radius: 54px;
+  border-radius: 48px;
   box-shadow:
     0 0 0 0.5px rgba(255,255,255,0.08),
     0 0 0 1.5px #3a3a3c,
     0 0 0 2px rgba(255,255,255,0.22),
     0 0 0 3px #2c2c2e,
     0 0 0 3.5px rgba(255,255,255,0.08),
-    0 70px 140px rgba(0,0,0,1),
-    0 24px 48px rgba(0,0,0,0.8),
+    0 50px 110px rgba(0,0,0,1),
+    0 18px 40px rgba(0,0,0,0.8),
     inset 0 1px 0 rgba(255,255,255,0.1),
     inset 0 -1px 0 rgba(0,0,0,0.5);
 }
-/* Subtle reflection under iPhone on pure-black bg */
 .iphone-device::after {
   content: '';
   position: absolute;
-  bottom: -60px; left: 10%; right: 10%;
-  height: 60px;
-  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(12px);
-  pointer-events: none;
+  bottom: -48px; left: 10%; right: 10%; height: 48px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.07) 0%, transparent 70%);
+  border-radius: 50%; filter: blur(10px); pointer-events: none;
 }
 
 /* Physical buttons */
 .iphone-btn { position: absolute; background: #2c2c2e; border-radius: 3px; }
-.iphone-action-btn { top: 100px; left: -3px; width: 4px; height: 28px; border-radius: 2px; background: #3a3a3c; }
-.iphone-vol1 { top: 148px; left: -3px; width: 4px; height: 38px; }
-.iphone-vol2 { top: 200px; left: -3px; width: 4px; height: 38px; }
-.iphone-power { top: 180px; right: -3px; width: 4px; height: 64px; }
+.iphone-action-btn { top: 86px; left: -3px; width: 4px; height: 24px; border-radius: 2px; background: #3a3a3c; }
+.iphone-vol1 { top: 126px; left: -3px; width: 4px; height: 32px; }
+.iphone-vol2 { top: 168px; left: -3px; width: 4px; height: 32px; }
+.iphone-power { top: 150px; right: -3px; width: 4px; height: 54px; }
 
 /* Camera bump */
 .iphone-camera-bump {
-  position: absolute;
-  top: 20px; right: 20px;
-  width: 88px; height: 88px;
-  background: #2c2c2e;
-  border-radius: 22px;
+  position: absolute; top: 16px; right: 16px;
+  width: 76px; height: 76px; background: #2c2c2e; border-radius: 20px;
   display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
-  gap: 6px; padding: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  gap: 5px; padding: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
 .iphone-lens {
-  background: #111;
-  border-radius: 50%;
+  background: #111; border-radius: 50%;
   box-shadow: inset 0 0 0 2px rgba(255,255,255,0.08), 0 0 0 1px rgba(0,0,0,0.4);
 }
 .iphone-lidar {
-  background: #1a1a1a;
-  border-radius: 50%;
+  background: #1a1a1a; border-radius: 50%;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
 }
 
 /* Screen */
 .iphone-screen {
-  position: absolute;
-  inset: 11px;
-  border-radius: 44px;
-  overflow: hidden;
+  position: absolute; inset: 9px; border-radius: 38px; overflow: hidden;
   background:
     radial-gradient(ellipse 90% 50% at 50% 5%,  rgba(60,35,160,0.55) 0%, transparent 60%),
     radial-gradient(ellipse 60% 40% at 80% 85%, rgba(160,35,90,0.38) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 35% at 10% 65%, rgba(20,55,180,0.3) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 10% 65%, rgba(20,55,180,0.3)  0%, transparent 55%),
     linear-gradient(180deg, #04040e 0%, #060412 45%, #040210 100%);
 }
-/* Screen glare — subtle edge reflection */
 .iphone-screen::before {
-  content: '';
-  position: absolute;
-  inset: 0; z-index: 50;
-  border-radius: inherit;
-  background: linear-gradient(130deg,
-    rgba(255,255,255,0.06) 0%,
-    rgba(255,255,255,0.02) 20%,
-    transparent 45%
-  );
+  content: ''; position: absolute; inset: 0; z-index: 50; border-radius: inherit;
+  background: linear-gradient(130deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 20%, transparent 45%);
   pointer-events: none;
 }
 
 /* Dynamic Island */
 .dynamic-island {
-  position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
-  width: 118px; height: 34px;
-  background: #000;
-  border-radius: 20px;
-  z-index: 52;
+  position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+  width: 100px; height: 28px; background: #000; border-radius: 18px; z-index: 52;
   box-shadow: 0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
 /* Status bar */
 .iphone-status-bar {
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 56px;
+  position: absolute; top: 0; left: 0; right: 0; height: 50px;
   display: flex; align-items: flex-end; justify-content: space-between;
-  padding: 0 22px 6px;
+  padding: 0 20px 6px; z-index: 51;
 }
-.iphone-time { font: 600 14px/1 var(--apple-font); color: #fff; letter-spacing: -0.01em; }
-.iphone-status-icons { display: flex; align-items: center; gap: 5px; color: #fff; }
+.iphone-time { font: 600 13px/1 var(--apple-font); color: #fff; letter-spacing: -0.01em; }
+.iphone-status-icons { display: flex; align-items: center; gap: 4px; color: #fff; }
 
-/* Home screen */
+/* Home screen — icons start below status bar, end above dock */
 .iphone-homescreen {
-  position: absolute;
-  inset: 0;
-  padding-top: 56px;
+  position: absolute; inset: 0;
+  padding-top: 50px;
+  padding-bottom: 106px;   /* room for dock (80px dock + 26px gap) */
   display: flex; flex-direction: column;
-}
-.iphone-date-widget {
-  display: flex; flex-direction: column; align-items: center;
-  padding: 1.8rem 0 0.8rem;
-}
-.iphone-day {
-  font: 500 11px/1 var(--apple-font);
-  color: rgba(255,255,255,0.8);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.iphone-date-num {
-  font: 100 62px/1 var(--apple-font);
-  color: #fff;
-  letter-spacing: -0.03em;
-  margin-top: 2px;
 }
 
 .iphone-apps-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 14px 8px; padding: 0 12px;
-  flex: 1;
-  align-content: start;
+  gap: 12px 6px; padding: 14px 10px 0;
+  flex: 1; align-content: start;
 }
 
 /* Page dots */
 .iphone-page-dots {
   flex-shrink: 0;
   display: flex; justify-content: center; align-items: center;
-  gap: 5px; padding: 8px 0 6px;
+  gap: 5px; padding: 10px 0 6px;
 }
-.iphone-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: rgba(255,255,255,0.28);
-}
+.iphone-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.28); }
 .iphone-dot-active { background: rgba(255,255,255,0.88); }
 
 .iphone-app {
-  display: flex; flex-direction: column; align-items: center; gap: 5px;
-  background: none; border: none; cursor: pointer;
-  transition: transform 0.15s;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  background: none; border: none; cursor: pointer; transition: transform 0.15s;
 }
 .iphone-app:active { transform: scale(0.88); }
 
 .iphone-icon {
-  width: 54px; height: 54px; border-radius: 14px;
+  width: 50px; height: 50px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 24px; color: #fff;
+  font-size: 22px; color: #fff;
   box-shadow:
     0 1px 4px rgba(0,0,0,0.7),
-    0 6px 18px rgba(0,0,0,0.4),
+    0 5px 16px rgba(0,0,0,0.4),
     inset 0 1px 0 rgba(255,255,255,0.22),
     inset 0 -1px 0 rgba(0,0,0,0.15);
 }
@@ -1449,12 +1403,8 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 /* Photos rainbow pinwheel */
 .gallery-icon-bg {
   background: conic-gradient(
-    #ff3b30 0deg 60deg,
-    #ff9500 60deg 120deg,
-    #ffcc00 120deg 180deg,
-    #34c759 180deg 240deg,
-    #007aff 240deg 300deg,
-    #af52de 300deg 360deg
+    #ff3b30 0deg 60deg, #ff9500 60deg 120deg, #ffcc00 120deg 180deg,
+    #34c759 180deg 240deg, #007aff 240deg 300deg, #af52de 300deg 360deg
   );
 }
 /* Safari compass gradient */
@@ -1463,15 +1413,15 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 }
 
 .iphone-app > span:not(.iphone-icon) {
-  font: 400 10px/1.2 var(--apple-font); color: rgba(255,255,255,0.9);
+  font: 400 9px/1.2 var(--apple-font); color: rgba(255,255,255,0.9);
   text-align: center; letter-spacing: -0.01em;
   text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
 
-/* Dock */
+/* Dock — absolutely pinned to screen bottom */
 .iphone-dock {
-  flex-shrink: 0;
-  padding: 8px 14px 10px;
+  position: absolute; bottom: 16px; left: 0; right: 0;
+  padding: 0 12px;
 }
 .iphone-dock-inner {
   display: flex; justify-content: space-evenly;
@@ -1481,7 +1431,7 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   padding: 10px 18px;
   gap: 16px;
 }
-.iphone-dock-app .iphone-icon { width: 50px; height: 50px; }
+.iphone-dock-app .iphone-icon { width: 46px; height: 46px; }
 
 /* Home indicator */
 .iphone-home-indicator {
