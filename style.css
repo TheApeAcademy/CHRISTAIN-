@@ -234,28 +234,30 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   color: #fff;
 }
 
-/* Hero glass slogan bar — overlays TOP of hero photo */
+/* Hero glass slogan bar — real glass at bottom of photo card */
 .hero-glass-bar {
   position: absolute;
-  top: 64px; left: 0; right: 0;
-  height: 48px;
+  bottom: 0; left: 0; right: 0;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border-top: 1px solid rgba(255,255,255,0.12);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  z-index: 3;
+  /* Real glass: almost transparent, no blur, light refracts at top edge */
+  background: rgba(255,255,255,0.03);
+  border-top: 1px solid rgba(255,255,255,0.38);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,0.5),
+    inset 0 -1px 0 rgba(255,255,255,0.05);
+  z-index: 2;
 }
 .hero-glass-bar span {
   font-family: var(--apple-font);
-  font-size: 0.66rem;
+  font-size: 0.64rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.75);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
 }
 
 .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; opacity: 0; }
@@ -285,7 +287,7 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
   white-space: nowrap; display: flex; align-items: center; gap: 0.5rem;
   font-size: 0.75rem; font-weight: 500; padding: 0.5rem 1rem; border-radius: 100px;
-  background: rgba(8,8,8,0.8); backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.8); backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.12); color: var(--text-muted);
 }
 
@@ -303,7 +305,7 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 .portrait-badge {
   position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
   white-space: nowrap; font-size: 0.75rem; font-weight: 500; padding: 0.5rem 1rem; border-radius: 100px;
-  background: rgba(10,10,10,0.75); backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.75); backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.12); color: var(--text-muted);
 }
 .about-bio { font-size: 1.05rem; line-height: 1.8; color: var(--text-muted); margin: 1.5rem 0 2rem; }
@@ -682,7 +684,21 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 }
 .lw-cta-pill .lw-stat-num { color: var(--purple); }
 
-/* ── 12. QUICK STATS STRIP ──────────────────────────────── */
+/* ── 12. HERO VIDEO ─────────────────────────────────────── */
+.hero-video-wrap {
+  position: relative;
+  width: 100%;
+  background: #000;
+  line-height: 0;
+}
+.hero-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ── 12b. QUICK STATS STRIP ─────────────────────────────── */
 .quick-stats-wrap {
   background: var(--bg);
   padding-top: 2.5rem;
