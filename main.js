@@ -228,6 +228,26 @@ function initBrandTiles() {
     const walk = (x - startX) * 1.5;
     track.scrollLeft = scrollLeft - walk;
   });
+
+  /* Staggered scroll entrance — cards fan in with their tilt when section is visible */
+  const section = document.getElementById('brands');
+  if (!section) return;
+  const cards = track.querySelectorAll('.brand-collab-card');
+
+  const observer = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    observer.disconnect();
+    cards.forEach((card, i) => {
+      card.style.transitionDelay = `${i * 0.1}s`;
+      card.classList.add('bcc-visible');
+    });
+    /* Clean up delays after animation so hover transitions aren't delayed */
+    setTimeout(() => {
+      cards.forEach(c => { c.style.transitionDelay = ''; });
+    }, cards.length * 100 + 800);
+  }, { threshold: 0.15 });
+
+  observer.observe(section);
 }
 
 /* ── GALLERY ──────────────────────────────────────────────── */
@@ -316,44 +336,86 @@ function initGallery() {
 
 /* ── IPHONE MODAL ─────────────────────────────────────────── */
 function initIphone() {
-  const modal     = document.getElementById('iphoneModal');
-  const bg        = document.getElementById('iphoneModalBg');
-  const closeBtn  = document.getElementById('iphoneClose');
-  const fabBtn    = document.getElementById('fabIphone');
+  const modal    = document.getElementById('iphoneModal');
+  const bg       = document.getElementById('iphoneModalBg');
+  const closeBtn = document.getElementById('iphoneClose');
+  const fabBtn   = document.getElementById('fabIphone');
+  const wrapper  = modal.querySelector('.iphone-wrapper');
+  const device   = modal.querySelector('.iphone-device');
 
   const openIphone  = () => { modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; };
-  const closeIphone = () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; };
+  const closeIphone = () => {
+    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow='';
+    /* Reset tilt on close */
+    wrapper.style.transition = 'transform 0.5s cubic-bezier(0.16,1,0.3,1)';
+    wrapper.style.transform  = '';
+  };
 
   fabBtn.addEventListener('click', openIphone);
   closeBtn.addEventListener('click', closeIphone);
   bg.addEventListener('click', closeIphone);
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeIphone(); });
 
+  /* ── 3D TILT on mouse ── */
+  modal.addEventListener('mousemove', e => {
+    if (!modal.classList.contains('open')) return;
+    const rect = wrapper.getBoundingClientRect();
+    const cx   = rect.left + rect.width  / 2;
+    const cy   = rect.top  + rect.height / 2;
+    const dx   = (e.clientX - cx) / (rect.width  / 2); // –1 … +1
+    const dy   = (e.clientY - cy) / (rect.height / 2); // –1 … +1
+    const rotY =  dx * 18;   // left ↔ right, max ±18°
+    const rotX = -dy * 10;   // up ↔ down, max ±10°
+    wrapper.style.transition = 'transform 0.08s ease';
+    wrapper.style.transform  = `perspective(1200px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1)`;
+  });
+
+  modal.addEventListener('mouseleave', () => {
+    wrapper.style.transition = 'transform 0.55s cubic-bezier(0.16,1,0.3,1)';
+    wrapper.style.transform  = 'perspective(1200px) rotateX(3deg) rotateY(0deg) scale(1)';
+  });
+
+  /* ── 3D TILT on touch ── */
+  modal.addEventListener('touchmove', e => {
+    if (!modal.classList.contains('open')) return;
+    const t    = e.touches[0];
+    const rect = wrapper.getBoundingClientRect();
+    const dx   = (t.clientX - (rect.left + rect.width  / 2)) / (rect.width  / 2);
+    const dy   = (t.clientY - (rect.top  + rect.height / 2)) / (rect.height / 2);
+    wrapper.style.transition = 'transform 0.1s ease';
+    wrapper.style.transform  = `perspective(1200px) rotateX(${-dy*8}deg) rotateY(${dx*14}deg) scale(1)`;
+  }, { passive: true });
+
+  /* ── HAPTIC VIBRATION on icon tap ── */
+  function triggerVibration() {
+    device.classList.remove('vibrating');
+    void device.offsetWidth;           // reflow — restart animation
+    device.classList.add('vibrating');
+    if (navigator.vibrate) navigator.vibrate([40, 20, 40]);
+    setTimeout(() => device.classList.remove('vibrating'), 450);
+  }
+
   // App actions
   modal.querySelectorAll('.iphone-app').forEach(app => {
     app.addEventListener('click', () => {
+      triggerVibration();
       const action = app.getAttribute('data-action');
       switch (action) {
         case 'phone':
-          closeIphone();
-          window.location.href = 'tel:+34631537136';
+          setTimeout(() => { closeIphone(); window.location.href = 'tel:+34631537136'; }, 250);
           break;
         case 'messages':
         case 'whatsapp':
-          closeIphone();
-          window.open('https://wa.me/34631537136', '_blank');
+          setTimeout(() => { closeIphone(); window.open('https://wa.me/34631537136', '_blank'); }, 250);
           break;
         case 'email':
-          closeIphone();
-          window.location.href = 'mailto:chrttprieto@gmail.com';
+          setTimeout(() => { closeIphone(); window.location.href = 'mailto:chrttprieto@gmail.com'; }, 250);
           break;
         case 'instagram':
-          closeIphone();
-          window.open('https://instagram.com/chrtt.prieto', '_blank');
+          setTimeout(() => { closeIphone(); window.open('https://instagram.com/chrtt.prieto', '_blank'); }, 250);
           break;
         case 'tiktok':
-          closeIphone();
-          window.open('https://tiktok.com/@chrtt.prieto', '_blank');
+          setTimeout(() => { closeIphone(); window.open('https://tiktok.com/@chrtt.prieto', '_blank'); }, 250);
           break;
         case 'gallery':
           closeIphone();
@@ -361,27 +423,24 @@ function initIphone() {
             document.getElementById('galleryOverlay').classList.add('open');
             document.getElementById('galleryOverlay').setAttribute('aria-hidden','false');
             document.body.style.overflow = 'hidden';
-          }, 300);
+          }, 350);
           break;
         case 'collab':
           closeIphone();
-          setTimeout(() => openCollab(), 300);
+          setTimeout(() => openCollab(), 350);
           break;
         case 'magazine':
-          closeIphone();
-          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+          setTimeout(() => { closeIphone(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }, 250);
           break;
         case 'safari':
-          closeIphone();
-          window.open('https://instagram.com/chrtt.prieto', '_blank');
+          setTimeout(() => { closeIphone(); window.open('https://instagram.com/chrtt.prieto', '_blank'); }, 250);
           break;
         case 'youtube':
-          closeIphone();
-          window.open('https://youtube.com/@chrttprieto', '_blank');
+          setTimeout(() => { closeIphone(); window.open('https://youtube.com/@chrttprieto', '_blank'); }, 250);
           break;
         case 'music':
         case 'camera':
-          closeIphone();
+          setTimeout(() => closeIphone(), 350);
           break;
       }
     });

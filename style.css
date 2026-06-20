@@ -198,6 +198,11 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   padding-top: 2rem; padding-bottom: 2rem;
 }
 @media (max-width: 900px) {
+  /* Allow glass bar to bleed edge-to-edge without being clipped */
+  .section-hero { overflow: visible; }
+  /* Orbs are decorative desktop-only — hide on mobile */
+  .orb { display: none; }
+
   /* Remove container padding; card gets its own side margin below */
   .hero-inner {
     grid-template-columns: 1fr;
@@ -210,7 +215,6 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
     width: 100%;
     display: flex;
     justify-content: center;
-    /* Extra bottom padding so glass bar doesn't overlap text below */
     padding-bottom: 54px;
   }
   /* Card: NOT edge-to-edge — has side margin and keeps rounded corners */
@@ -221,10 +225,12 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
     border: 1px solid var(--border) !important;
     margin: 0 auto;
   }
-  /* Glass bar: bleeds edge-to-edge on mobile using negative margin */
+  /* Glass bar: true 100vw bleed using centered-absolute trick */
   .hero-glass-bar {
-    left: -1.5rem;
-    right: -1.5rem;
+    left: 50%;
+    right: auto;
+    width: 100vw;
+    transform: translateX(-50%);
     border-radius: 0;
   }
   /* Re-add padding only to the text block */
@@ -852,19 +858,20 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 /* Scroll track */
 .brand-collab-track {
   display: flex;
-  gap: 1.25rem;
+  gap: 2rem;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 2.5rem 2rem 4rem;
+  padding: 4rem 3rem 6rem;
   cursor: grab;
   user-select: none;
+  align-items: center;
 }
 .brand-collab-track::-webkit-scrollbar { display: none; }
 .brand-collab-track.dragging { cursor: grabbing; scroll-snap-type: none; }
 
-/* Glass squircle brand card */
+/* Glass squircle brand card — transparent base */
 .brand-collab-card {
   flex-shrink: 0;
   width: 268px;
@@ -874,23 +881,53 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  background: linear-gradient(155deg, var(--bcc-from), var(--bcc-to));
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.14);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.2),
     inset 0 -1px 0 rgba(255,255,255,0.04),
-    0 24px 64px rgba(0,0,0,0.55);
+    0 24px 80px rgba(0,0,0,0.6);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+  /* Start invisible — JS adds .bcc-visible with stagger */
+  opacity: 0;
+  transform: translateY(50px) rotate(0deg);
+  transition:
+    opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+    transform 0.75s cubic-bezier(0.16,1,0.3,1),
+    box-shadow 0.35s var(--ease-out);
 }
-.brand-collab-card:hover {
-  transform: translateY(-12px) scale(1.02);
+
+/* Odd cards: transparent glass, lean clockwise */
+.brand-collab-card.bcc-visible:nth-child(odd) {
+  opacity: 1;
+  transform: rotate(5deg);
+}
+
+/* Even cards: frosted glass, lean counter-clockwise */
+.brand-collab-card:nth-child(even) {
+  background: rgba(255,255,255,0.09);
+  backdrop-filter: blur(32px) saturate(1.5);
+  -webkit-backdrop-filter: blur(32px) saturate(1.5);
+  border-color: rgba(255,255,255,0.22);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.22),
-    0 48px 96px rgba(0,0,0,0.7),
-    0 0 0 1px rgba(255,255,255,0.14);
+    inset 0 1.5px 0 rgba(255,255,255,0.3),
+    inset 0 -1px 0 rgba(255,255,255,0.06),
+    0 24px 80px rgba(0,0,0,0.65);
+}
+.brand-collab-card.bcc-visible:nth-child(even) {
+  opacity: 1;
+  transform: rotate(-5deg);
+}
+
+/* Hover: snap to upright + lift */
+.brand-collab-card.bcc-visible:hover {
+  transform: translateY(-14px) scale(1.03) rotate(0deg) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.28),
+    0 48px 100px rgba(0,0,0,0.75),
+    0 0 0 1px rgba(255,255,255,0.18) !important;
 }
 
 /* Top-edge refraction */
@@ -1401,19 +1438,14 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 .iphone-icon {
   width: 54px; height: 54px; border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 22px; color: #fff;
+  font-size: 24px; color: #fff;
   box-shadow:
-    0 1px 3px rgba(0,0,0,0.6),
-    0 4px 14px rgba(0,0,0,0.35),
-    inset 0 1px 0 rgba(255,255,255,0.18);
+    0 1px 4px rgba(0,0,0,0.7),
+    0 6px 18px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    inset 0 -1px 0 rgba(0,0,0,0.15);
 }
-.icon-emoji {
-  font-size: 26px;
-  line-height: 1;
-  display: block;
-  user-select: none;
-  pointer-events: none;
-}
+.iphone-icon i { pointer-events: none; }
 /* Photos rainbow pinwheel */
 .gallery-icon-bg {
   background: conic-gradient(
@@ -1424,6 +1456,10 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
     #007aff 240deg 300deg,
     #af52de 300deg 360deg
   );
+}
+/* Safari compass gradient */
+.safari-icon-bg {
+  background: conic-gradient(#0055d4 0deg, #9fd5ff 90deg, #0055d4 180deg, #2776e5 270deg, #0055d4 360deg);
 }
 
 .iphone-app > span:not(.iphone-icon) {
@@ -1451,6 +1487,21 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 .iphone-home-indicator {
   position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
   width: 100px; height: 4px; background: rgba(255,255,255,0.3); border-radius: 3px;
+}
+
+/* iPhone vibration haptic feedback */
+@keyframes iphoneVibrate {
+  0%,100% { transform: translate(0,0); }
+  12%  { transform: translate(-4px,1px) rotate(-0.5deg); }
+  25%  { transform: translate(4px,-1px) rotate(0.5deg); }
+  37%  { transform: translate(-3px,1px) rotate(-0.3deg); }
+  50%  { transform: translate(3px,0px) rotate(0.3deg); }
+  62%  { transform: translate(-2px,0); }
+  75%  { transform: translate(2px,0); }
+  87%  { transform: translate(-1px,0); }
+}
+.iphone-device.vibrating {
+  animation: iphoneVibrate 0.42s ease-in-out;
 }
 
 /* ── 21. COLLAB FLASHCARD MODAL ──────────────────────────── */
