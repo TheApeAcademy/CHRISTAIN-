@@ -85,8 +85,10 @@
 
         <div class="hero-visual" id="heroVisual">
           <div class="hero-photo-card">
-            <img src="assets/images/pink-stars.jpg" alt="Christian Prieto" loading="eager">
-            <!-- Real glass slogan bar at bottom of hero image -->
+            <div class="hero-photo-img-wrap">
+              <img src="assets/images/pink-stars.jpg" alt="Christian Prieto" loading="eager">
+            </div>
+            <!-- Real glass slogan bar — bleeds edge-to-edge on mobile -->
             <div class="hero-glass-bar" aria-hidden="true">
               <span>Content that moves people &nbsp;·&nbsp; Fashion &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Travel</span>
             </div>
@@ -342,99 +344,82 @@
         <div class="section-header gsap-fade-up">
           <span class="section-eyebrow">Brand Collaborations</span>
           <h2 class="section-title">Brands That<br><em>Trust the Vision</em></h2>
-          <p class="section-sub">Tap any brand to explore the collaboration</p>
+          <p class="section-sub">Swipe to explore · Tap to view gallery</p>
         </div>
       </div>
-      <div class="brands-grid">
 
-        <div class="brand-tile gsap-fade-up" tabindex="0">
-          <img src="assets/images/core-division-1.jpg" alt="Core Division" loading="lazy">
-          <div class="brand-tile-base">
-            <span class="brand-tile-name">CORE DIVISION</span>
-            <span class="brand-tile-cat">Streetwear</span>
+      <div class="brand-collab-track" id="brandTrack">
+
+        <div class="brand-collab-card" onclick="openBrandGallery()" style="--bcc-from:#0e1830;--bcc-to:#1a2d56">
+          <div class="bcc-shine"></div>
+          <div class="bcc-content">
+            <span class="bcc-cat">Youth Fashion · Lifestyle</span>
+            <div class="bcc-logo-text">P&amp;B</div>
+            <h3 class="bcc-name">PULL &amp; BEAR</h3>
+            <p class="bcc-desc">Youth fashion campaigns reaching Gen-Z audiences across TikTok and Instagram. Authentic street styling from Barcelona.</p>
+            <div class="bcc-tags"><span>TikTok</span><span>Instagram</span><span>Street</span></div>
           </div>
-          <div class="brand-tile-overlay">
-            <span class="brand-tile-cat-ov">Streetwear · Fashion</span>
-            <h3>CORE DIVISION</h3>
-            <p>Premium streetwear with bold graphics and athletic heritage. Organic content across TikTok and Reels reaching Spain and Latin America.</p>
-            <div class="brand-tile-tags"><span>Organic</span><span>TikTok</span><span>Reels</span></div>
-            <a href="https://instagram.com/chrtt.prieto" target="_blank" rel="noopener" class="brand-tile-link"><i class="fab fa-instagram"></i> View Collab</a>
-          </div>
+          <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
         </div>
 
-        <div class="brand-tile gsap-fade-up" tabindex="0">
-          <img src="assets/images/pink-stars.jpg" alt="Palm Angels" loading="lazy">
-          <div class="brand-tile-base">
-            <span class="brand-tile-name">PALM ANGELS</span>
-            <span class="brand-tile-cat">Luxury Streetwear</span>
+        <div class="brand-collab-card" onclick="openBrandGallery()" style="--bcc-from:#090909;--bcc-to:#181818">
+          <div class="bcc-shine"></div>
+          <div class="bcc-content">
+            <span class="bcc-cat">Independent · Luxury</span>
+            <div class="bcc-logo-text">EME</div>
+            <h3 class="bcc-name">EME STUDIO</h3>
+            <p class="bcc-desc">Independent label drops with limited-edition pieces. Art-meets-fashion content bridging luxury and street culture.</p>
+            <div class="bcc-tags"><span>Editorial</span><span>Reels</span><span>Limited</span></div>
           </div>
-          <div class="brand-tile-overlay">
-            <span class="brand-tile-cat-ov">Luxury · Streetwear</span>
-            <h3>PALM ANGELS</h3>
-            <p>High-fashion streetwear rooted in LA skate culture. Editorial content with authentic urban lifestyle integration.</p>
-            <div class="brand-tile-tags"><span>Editorial</span><span>Instagram</span><span>TikTok</span></div>
-            <a href="https://instagram.com/chrtt.prieto" target="_blank" rel="noopener" class="brand-tile-link"><i class="fab fa-instagram"></i> View Collab</a>
-          </div>
+          <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
         </div>
 
-        <div class="brand-tile gsap-fade-up" tabindex="0">
-          <img src="assets/images/dressed-to-kill.jpg" alt="CDG" loading="lazy">
-          <div class="brand-tile-base">
-            <span class="brand-tile-name">COMME DES GARÇONS</span>
-            <span class="brand-tile-cat">Avant-Garde</span>
+        <div class="brand-collab-card" onclick="openBrandGallery()" style="--bcc-from:#0e0e12;--bcc-to:#1c1c22">
+          <div class="bcc-shine"></div>
+          <div class="bcc-content">
+            <span class="bcc-cat">Streetwear · UK</span>
+            <div class="bcc-logo-text">SCUF</div>
+            <h3 class="bcc-name">SCUFFERS</h3>
+            <p class="bcc-desc">UK streetwear with raw urban grit. Exclusive styling shoots and organic content integration across social platforms.</p>
+            <div class="bcc-tags"><span>TikTok</span><span>Organic</span><span>Urban</span></div>
           </div>
-          <div class="brand-tile-overlay">
-            <span class="brand-tile-cat-ov">Avant-Garde · Fashion</span>
-            <h3>COMME DES GARÇONS</h3>
-            <p>Boundary-pushing fashion with deconstructed aesthetics. Content that bridges art direction and street authenticity.</p>
-            <div class="brand-tile-tags"><span>Fashion</span><span>Editorial</span><span>Reels</span></div>
-            <a href="https://instagram.com/chrtt.prieto" target="_blank" rel="noopener" class="brand-tile-link"><i class="fab fa-instagram"></i> View Collab</a>
-          </div>
+          <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
         </div>
 
-        <div class="brand-tile gsap-fade-up" tabindex="0">
-          <img src="assets/images/street-hoodie.jpg" alt="Zara" loading="lazy">
-          <div class="brand-tile-base">
-            <span class="brand-tile-name">ZARA</span>
-            <span class="brand-tile-cat">Contemporary Fashion</span>
+        <div class="brand-collab-card" onclick="openBrandGallery()" style="--bcc-from:#1a1108;--bcc-to:#2c1c0e">
+          <div class="bcc-shine"></div>
+          <div class="bcc-content">
+            <span class="bcc-cat">Sustainable · Fashion</span>
+            <div class="bcc-logo-text">NP</div>
+            <h3 class="bcc-name">NUDE PROJECT</h3>
+            <p class="bcc-desc">Sustainable fashion narrative connecting with conscious Gen-Z shoppers through authentic Barcelona lifestyle storytelling.</p>
+            <div class="bcc-tags"><span>Sustainable</span><span>TikTok</span><span>Story</span></div>
           </div>
-          <div class="brand-tile-overlay">
-            <span class="brand-tile-cat-ov">Contemporary · Fashion</span>
-            <h3>ZARA</h3>
-            <p>Trend-driven looks that resonate with a Gen Z and millennial audience. Haul-style content with high organic reach.</p>
-            <div class="brand-tile-tags"><span>Haul</span><span>TikTok</span><span>Lookbook</span></div>
-            <a href="https://instagram.com/chrtt.prieto" target="_blank" rel="noopener" class="brand-tile-link"><i class="fab fa-instagram"></i> View Collab</a>
-          </div>
+          <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
         </div>
 
-        <div class="brand-tile gsap-fade-up" tabindex="0">
-          <img src="assets/images/portrait-bw.jpg" alt="Calvin Klein" loading="lazy">
-          <div class="brand-tile-base">
-            <span class="brand-tile-name">CALVIN KLEIN</span>
-            <span class="brand-tile-cat">Minimalist Fashion</span>
+        <div class="brand-collab-card" onclick="openBrandGallery()" style="--bcc-from:#04101e;--bcc-to:#0c1e34">
+          <div class="bcc-shine"></div>
+          <div class="bcc-content">
+            <span class="bcc-cat">Premium · Streetwear</span>
+            <div class="bcc-logo-text">CC</div>
+            <h3 class="bcc-name">COLD CULTURE</h3>
+            <p class="bcc-desc">Premium cold-weather brand with a fashion-forward edge. Urban shoots across Barcelona's most iconic locations.</p>
+            <div class="bcc-tags"><span>Editorial</span><span>Reels</span><span>Premium</span></div>
           </div>
-          <div class="brand-tile-overlay">
-            <span class="brand-tile-cat-ov">Minimalist · Lifestyle</span>
-            <h3>CALVIN KLEIN</h3>
-            <p>Clean, confident aesthetics that align with CK's identity. Lifestyle content connecting the brand to youth culture.</p>
-            <div class="brand-tile-tags"><span>Lifestyle</span><span>Reels</span><span>Stories</span></div>
-            <a href="https://instagram.com/chrtt.prieto" target="_blank" rel="noopener" class="brand-tile-link"><i class="fab fa-instagram"></i> View Collab</a>
-          </div>
+          <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
         </div>
 
-        <div class="brand-tile gsap-fade-up" tabindex="0">
-          <img src="assets/images/core-division-2.jpg" alt="Aime Leon Dore" loading="lazy">
-          <div class="brand-tile-base">
-            <span class="brand-tile-name">AIME LEON DORE</span>
-            <span class="brand-tile-cat">NYC Sportswear</span>
+        <div class="brand-collab-card" onclick="openBrandGallery()" style="--bcc-from:#0a0a0a;--bcc-to:#181818">
+          <div class="bcc-shine"></div>
+          <div class="bcc-content">
+            <span class="bcc-cat">High-Street · Global</span>
+            <div class="bcc-logo-text">ZRA</div>
+            <h3 class="bcc-name">ZARA</h3>
+            <p class="bcc-desc">High-street fashion coordination featuring seasonal styling content reaching millions across TikTok and Reels.</p>
+            <div class="bcc-tags"><span>TikTok</span><span>Reels</span><span>Fashion</span></div>
           </div>
-          <div class="brand-tile-overlay">
-            <span class="brand-tile-cat-ov">NYC · Sportswear</span>
-            <h3>AIME LEON DORE</h3>
-            <p>Culturally rooted sportswear from New York. Thoughtful content that matches ALD's storytelling-first approach.</p>
-            <div class="brand-tile-tags"><span>Sportswear</span><span>TikTok</span><span>Instagram</span></div>
-            <a href="https://instagram.com/chrtt.prieto" target="_blank" rel="noopener" class="brand-tile-link"><i class="fab fa-instagram"></i> View Collab</a>
-          </div>
+          <div class="bcc-footer"><span>View in Gallery</span><i class="fas fa-arrow-right"></i></div>
         </div>
 
       </div>
@@ -443,25 +428,25 @@
     <!-- ─── MARQUEE ───────────────────────────────────────── -->
     <div class="section-marquee" aria-hidden="true">
       <div class="marquee-wrap"><div class="marquee-track">
-        <span>Core Division</span><span class="m-dot">·</span>
-        <span>Palm Angels</span><span class="m-dot">·</span>
-        <span>CDG</span><span class="m-dot">·</span>
-        <span>Nike</span><span class="m-dot">·</span>
+        <span>Pull &amp; Bear</span><span class="m-dot">·</span>
+        <span>EME Studio</span><span class="m-dot">·</span>
+        <span>Scuffers</span><span class="m-dot">·</span>
+        <span>Nude Project</span><span class="m-dot">·</span>
+        <span>Cold Culture</span><span class="m-dot">·</span>
         <span>Zara</span><span class="m-dot">·</span>
-        <span>Massimo Dutti</span><span class="m-dot">·</span>
-        <span>Calvin Klein</span><span class="m-dot">·</span>
-        <span>Tommy Hilfiger</span><span class="m-dot">·</span>
-        <span>Aime Leon Dore</span><span class="m-dot">·</span>
+        <span>Pull &amp; Bear</span><span class="m-dot">·</span>
+        <span>EME Studio</span><span class="m-dot">·</span>
+        <span>Scuffers</span><span class="m-dot">·</span>
         <span>New Balance</span><span class="m-dot">·</span>
-        <span>Core Division</span><span class="m-dot">·</span>
-        <span>Palm Angels</span><span class="m-dot">·</span>
-        <span>CDG</span><span class="m-dot">·</span>
-        <span>Nike</span><span class="m-dot">·</span>
+        <span>Pull &amp; Bear</span><span class="m-dot">·</span>
+        <span>EME Studio</span><span class="m-dot">·</span>
+        <span>Scuffers</span><span class="m-dot">·</span>
+        <span>Nude Project</span><span class="m-dot">·</span>
+        <span>Cold Culture</span><span class="m-dot">·</span>
         <span>Zara</span><span class="m-dot">·</span>
-        <span>Massimo Dutti</span><span class="m-dot">·</span>
-        <span>Calvin Klein</span><span class="m-dot">·</span>
-        <span>Tommy Hilfiger</span><span class="m-dot">·</span>
-        <span>Aime Leon Dore</span><span class="m-dot">·</span>
+        <span>Pull &amp; Bear</span><span class="m-dot">·</span>
+        <span>EME Studio</span><span class="m-dot">·</span>
+        <span>Scuffers</span><span class="m-dot">·</span>
         <span>New Balance</span><span class="m-dot">·</span>
       </div></div>
     </div>

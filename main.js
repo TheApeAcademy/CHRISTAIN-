@@ -197,14 +197,36 @@ function initParallax() {
   });
 }
 
-/* ── BRAND TILE TOUCH SUPPORT ─────────────────────────────── */
+/* ── BRAND COLLAB CAROUSEL ────────────────────────────────── */
+function openBrandGallery() {
+  const overlay = document.getElementById('galleryOverlay');
+  if (overlay) {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
 function initBrandTiles() {
-  document.querySelectorAll('.brand-tile').forEach(tile => {
-    tile.addEventListener('click', () => {
-      const isActive = tile.classList.contains('touch-active');
-      document.querySelectorAll('.brand-tile.touch-active').forEach(t => t.classList.remove('touch-active'));
-      if (!isActive) tile.classList.add('touch-active');
-    });
+  /* Drag-to-scroll on brand carousel */
+  const track = document.getElementById('brandTrack');
+  if (!track) return;
+
+  let isDown = false, startX = 0, scrollLeft = 0;
+
+  track.addEventListener('mousedown', e => {
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+  track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('dragging'); });
+  track.addEventListener('mouseup',    () => { isDown = false; track.classList.remove('dragging'); });
+  track.addEventListener('mousemove',  e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x    = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    track.scrollLeft = scrollLeft - walk;
   });
 }
 

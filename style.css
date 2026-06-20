@@ -198,7 +198,7 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   padding-top: 2rem; padding-bottom: 2rem;
 }
 @media (max-width: 900px) {
-  /* Remove container padding so photo card can be naturally full-width */
+  /* Remove container padding; card gets its own side margin below */
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 0;
@@ -210,13 +210,22 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
     width: 100%;
     display: flex;
     justify-content: center;
+    /* Extra bottom padding so glass bar doesn't overlap text below */
+    padding-bottom: 54px;
   }
+  /* Card: NOT edge-to-edge — has side margin and keeps rounded corners */
   .hero-photo-card {
-    width: 100% !important;
+    width: calc(100% - 3rem) !important;
     max-width: 100% !important;
-    border-radius: 0 !important;
-    border-left: none;
-    border-right: none;
+    border-radius: var(--r-xl) !important;
+    border: 1px solid var(--border) !important;
+    margin: 0 auto;
+  }
+  /* Glass bar: bleeds edge-to-edge on mobile using negative margin */
+  .hero-glass-bar {
+    left: -1.5rem;
+    right: -1.5rem;
+    border-radius: 0;
   }
   /* Re-add padding only to the text block */
   .hero-text {
@@ -328,11 +337,17 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   width: min(360px, 80vw);
   aspect-ratio: 3/4;
   border-radius: var(--r-xl);
-  overflow: hidden;
+  overflow: visible; /* glass bar allowed to bleed out on mobile */
   border: 1px solid var(--border);
   box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
 }
-.hero-photo-card img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+/* Inner wrapper clips the image to border-radius */
+.hero-photo-img-wrap {
+  position: absolute; inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.hero-photo-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 .hero-photo-badge {
   position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
   white-space: nowrap; display: flex; align-items: center; gap: 0.5rem;
@@ -830,61 +845,111 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   .quick-stats-strip { gap: 1.5rem 2rem; }
 }
 
-/* ── 13. BRANDS GRID ─────────────────────────────────────── */
+/* ── 13. BRANDS — horizontal glass card carousel ─────────── */
 .section-brands { padding: 8rem 0 0; }
 .section-brands .container { margin-bottom: 0; }
 
-.brands-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 3rem;
+/* Scroll track */
+.brand-collab-track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 2.5rem 2rem 4rem;
+  cursor: grab;
+  user-select: none;
 }
-@media (max-width: 900px) { .brands-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 500px) { .brands-grid { grid-template-columns: 1fr; } }
+.brand-collab-track::-webkit-scrollbar { display: none; }
+.brand-collab-track.dragging { cursor: grabbing; scroll-snap-type: none; }
 
-.brand-tile {
+/* Glass squircle brand card */
+.brand-collab-card {
+  flex-shrink: 0;
+  width: 268px;
+  height: 370px;
+  border-radius: 28px;
+  scroll-snap-align: start;
   position: relative;
-  aspect-ratio: 3/4;
   overflow: hidden;
   cursor: pointer;
-  outline: none;
+  background: linear-gradient(155deg, var(--bcc-from), var(--bcc-to));
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    inset 0 -1px 0 rgba(255,255,255,0.04),
+    0 24px 64px rgba(0,0,0,0.55);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
 }
-.brand-tile img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.7s var(--ease-out);
+.brand-collab-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    0 48px 96px rgba(0,0,0,0.7),
+    0 0 0 1px rgba(255,255,255,0.14);
 }
-.brand-tile:hover img,
-.brand-tile:focus img { transform: scale(1.06); }
 
-.brand-tile-base {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 1.5rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
-  transition: opacity 0.35s;
+/* Top-edge refraction */
+.bcc-shine {
+  position: absolute;
+  top: 0; left: 8%; right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55) 50%, transparent);
+  pointer-events: none;
 }
-.brand-tile-name { display: block; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; color: #fff; }
-.brand-tile-cat  { display: block; font-size: 0.65rem; color: rgba(255,255,255,0.55); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.08em; }
 
-.brand-tile-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.2) 100%);
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 2rem;
-  opacity: 0;
-  transition: opacity 0.35s;
+/* Card content */
+.bcc-content { padding: 1.75rem 1.75rem 1rem; }
+.bcc-cat {
+  display: block;
+  font-family: var(--apple-font);
+  font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.38); margin-bottom: 1.5rem;
 }
-.brand-tile:hover .brand-tile-overlay,
-.brand-tile:focus .brand-tile-overlay { opacity: 1; }
-.brand-tile:hover .brand-tile-base,
-.brand-tile:focus .brand-tile-base { opacity: 0; }
+.bcc-logo-text {
+  font-family: var(--apple-font);
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em;
+  color: rgba(255,255,255,0.15); text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.bcc-name {
+  font-family: var(--apple-font);
+  font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em;
+  color: #fff; line-height: 1.05; margin-bottom: 1rem;
+}
+.bcc-desc {
+  font-family: var(--apple-font);
+  font-size: 0.76rem; line-height: 1.7;
+  color: rgba(255,255,255,0.5); margin-bottom: 1rem;
+}
+.bcc-tags {
+  display: flex; flex-wrap: wrap; gap: 0.35rem;
+}
+.bcc-tags span {
+  font-family: var(--apple-font);
+  font-size: 0.56rem; text-transform: uppercase; letter-spacing: 0.12em;
+  padding: 0.2rem 0.58rem; border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.4);
+}
 
-.brand-tile-cat-ov { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; display: block; }
-.brand-tile-overlay h3 { font-size: 1.2rem; font-weight: 700; letter-spacing: 0.05em; color: #fff; margin-bottom: 0.75rem; }
-.brand-tile-overlay p { font-size: 0.82rem; line-height: 1.65; color: rgba(255,255,255,0.65); margin-bottom: 1rem; }
-.brand-tile-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
-.brand-tile-tags span { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.25rem 0.65rem; border-radius: 100px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.55); }
-.brand-tile-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: #fff; font-weight: 500; }
+/* Card footer CTA */
+.bcc-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.75rem 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  font-family: var(--apple-font);
+  font-size: 0.74rem; font-weight: 600; letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.25s;
+}
+.bcc-footer i { font-size: 0.7rem; transition: transform 0.25s; }
+.brand-collab-card:hover .bcc-footer { color: rgba(255,255,255,0.9); }
+.brand-collab-card:hover .bcc-footer i { transform: translateX(4px); }
 .brand-tile-link:hover { color: rgba(255,255,255,0.7); }
 
 /* ── 12. MARQUEE ─────────────────────────────────────────── */
