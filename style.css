@@ -1301,10 +1301,11 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 
 /* Pinterest masonry grid */
 .gallery-grid {
-  flex: 1; overflow-y: auto;
+  flex: 1; overflow-y: auto; overflow-x: hidden;
   columns: 2;
   column-gap: 6px;
   padding: 8px 6px;
+  width: 100%;
 }
 
 .gallery-item {
