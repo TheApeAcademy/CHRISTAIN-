@@ -198,24 +198,34 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   padding-top: 2rem; padding-bottom: 2rem;
 }
 @media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  /* Break photo card out of container so glass bar hits screen edges */
+  /* Remove container padding so photo card can be naturally full-width */
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
   .hero-visual {
     order: -1;
+    width: 100%;
     display: flex;
     justify-content: center;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
   }
   .hero-photo-card {
-    width: 100%;
-    border-radius: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
     border-left: none;
     border-right: none;
   }
+  /* Re-add padding only to the text block */
+  .hero-text {
+    padding: 2.5rem 2rem 3rem;
+    text-align: center;
+  }
+  .hero-strip { justify-content: center; }
+  .hero-ctas  { justify-content: center; }
+  .hero-tags  { justify-content: center; }
 }
 
 /* Orbs */
@@ -1171,17 +1181,20 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 /* iPhone Device Body */
 .iphone-device {
   position: relative;
-  width: 340px;
-  height: 740px;
-  background: #1c1c1e;
-  border-radius: 52px;
+  width: 345px;
+  height: 750px;
+  background: linear-gradient(165deg, #2c2c2e 0%, #1c1c1e 50%, #161618 100%);
+  border-radius: 54px;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.18),
-    0 0 0 3px #2a2a2c,
-    0 0 0 4.5px rgba(255,255,255,0.15),
-    0 60px 120px rgba(0,0,0,1),
-    0 20px 40px rgba(0,0,0,0.8),
-    inset 0 0 0 1px rgba(255,255,255,0.08);
+    0 0 0 0.5px rgba(255,255,255,0.08),
+    0 0 0 1.5px #3a3a3c,
+    0 0 0 2px rgba(255,255,255,0.22),
+    0 0 0 3px #2c2c2e,
+    0 0 0 3.5px rgba(255,255,255,0.08),
+    0 70px 140px rgba(0,0,0,1),
+    0 24px 48px rgba(0,0,0,0.8),
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    inset 0 -1px 0 rgba(0,0,0,0.5);
 }
 /* Subtle reflection under iPhone on pure-black bg */
 .iphone-device::after {
@@ -1227,20 +1240,37 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 /* Screen */
 .iphone-screen {
   position: absolute;
-  inset: 12px;
-  border-radius: 42px;
+  inset: 11px;
+  border-radius: 44px;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 22% 28%, rgba(70,50,210,0.58) 0%, transparent 48%),
-    radial-gradient(ellipse at 78% 68%, rgba(185,50,110,0.44) 0%, transparent 48%),
-    radial-gradient(ellipse at 55% 5%,  rgba(30,80,220,0.28) 0%, transparent 35%),
-    linear-gradient(178deg, #03050e 0%, #07081a 35%, #0c061e 65%, #100312 100%);
+    radial-gradient(ellipse 90% 50% at 50% 5%,  rgba(60,35,160,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 85%, rgba(160,35,90,0.38) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 10% 65%, rgba(20,55,180,0.3) 0%, transparent 55%),
+    linear-gradient(180deg, #04040e 0%, #060412 45%, #040210 100%);
+}
+/* Screen glare — subtle edge reflection */
+.iphone-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0; z-index: 50;
+  border-radius: inherit;
+  background: linear-gradient(130deg,
+    rgba(255,255,255,0.06) 0%,
+    rgba(255,255,255,0.02) 20%,
+    transparent 45%
+  );
+  pointer-events: none;
 }
 
 /* Dynamic Island */
 .dynamic-island {
   position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
-  width: 110px; height: 32px; background: #000; border-radius: 18px; z-index: 10;
+  width: 118px; height: 34px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 52;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
 /* Status bar */
@@ -1307,9 +1337,29 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   width: 54px; height: 54px; border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
   font-size: 22px; color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.6),
+    0 4px 14px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.18);
 }
-.gallery-icon-bg { background: linear-gradient(145deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3); }
+.icon-emoji {
+  font-size: 26px;
+  line-height: 1;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+/* Photos rainbow pinwheel */
+.gallery-icon-bg {
+  background: conic-gradient(
+    #ff3b30 0deg 60deg,
+    #ff9500 60deg 120deg,
+    #ffcc00 120deg 180deg,
+    #34c759 180deg 240deg,
+    #007aff 240deg 300deg,
+    #af52de 300deg 360deg
+  );
+}
 
 .iphone-app > span:not(.iphone-icon) {
   font: 400 10px/1.2 var(--apple-font); color: rgba(255,255,255,0.9);
