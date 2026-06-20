@@ -1258,17 +1258,19 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 .gallery-overlay {
   position: fixed; inset: 0; z-index: 2000;
   background: #050505;
-  display: flex; flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
   transform: translateY(100%);
   transition: transform 0.5s var(--ease-out);
 }
 .gallery-overlay.open { transform: translateY(0); }
 
 .gallery-overlay-header {
+  position: sticky; top: 0; z-index: 10;
+  background: #050505;
   display: flex; align-items: center; justify-content: space-between;
   padding: 1.25rem 2rem;
   border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
 }
 .gallery-title { font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.6rem; color: var(--text); }
 .gallery-close { font-size: 1.25rem; color: var(--text-muted); transition: color 0.2s; }
@@ -1276,9 +1278,11 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 
 /* Brand filter tabs — Pinterest style */
 .gallery-filters {
+  position: sticky; top: 4rem; z-index: 9;
+  background: #050505;
   display: flex; gap: 0; padding: 0 1rem 0;
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  overflow-x: auto; scrollbar-width: none; flex-shrink: 0;
+  overflow-x: auto; scrollbar-width: none;
 }
 .gallery-filters::-webkit-scrollbar { display: none; }
 .gf-tab {
@@ -1301,7 +1305,6 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 
 /* Pinterest masonry grid */
 .gallery-grid {
-  flex: 1; overflow-y: auto; overflow-x: hidden;
   columns: 2;
   column-gap: 6px;
   padding: 8px 6px;
@@ -1336,7 +1339,7 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 
 /* Lightbox */
 .lightbox {
-  position: absolute; inset: 0; z-index: 10;
+  position: fixed; inset: 0; z-index: 2010;
   background: rgba(0,0,0,0.95);
   display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none;
