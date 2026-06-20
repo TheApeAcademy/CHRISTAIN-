@@ -65,14 +65,21 @@ function initNav() {
     navOverlay.classList.add('open');
     navOverlay.setAttribute('aria-hidden', 'false');
     hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
   };
   const closeNav = () => {
     navOverlay.classList.remove('open');
     navOverlay.setAttribute('aria-hidden', 'true');
     hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
   };
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', e => {
+    if (navOverlay.classList.contains('open') &&
+        !navOverlay.contains(e.target) &&
+        !hamburger.contains(e.target)) {
+      closeNav();
+    }
+  });
 
   hamburger.addEventListener('click', openNav);
   navClose.addEventListener('click', closeNav);
@@ -468,6 +475,7 @@ function initCollab() {
   // Open triggers
   document.getElementById('collabTriggerAbout')?.addEventListener('click', openCollab);
   document.getElementById('collabTriggerWidget')?.addEventListener('click', openCollab);
+  document.getElementById('finalCollabBtn')?.addEventListener('click', openCollab);
 
   // Close
   closeBtn.addEventListener('click', closeCollab);
