@@ -4,9 +4,9 @@
 
 /* ── 1. TOKENS ─────────────────────────────────────────── */
 :root {
-  --bg:          #080808;
-  --surface:     #101010;
-  --surface-2:   #161616;
+  --bg:          #000;
+  --surface:     #050505;
+  --surface-2:   #0a0a0a;
   --border:      rgba(255,255,255,0.07);
   --border-hi:   rgba(255,255,255,0.14);
   --text:        #f0f0f0;
@@ -133,7 +133,7 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   transition: background 0.4s, border-color 0.4s;
   border-bottom: 1px solid transparent;
 }
-#nav.scrolled { background: rgba(8,8,8,0.88); backdrop-filter: blur(20px); border-color: var(--border); }
+#nav.scrolled { background: rgba(0,0,0,0.92); backdrop-filter: blur(20px); border-color: var(--border); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; letter-spacing: 0.05em; }
 .nav-links { display: flex; align-items: center; gap: 2.5rem; }
@@ -148,7 +148,7 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
 .hamburger { display: none; flex-direction: column; gap: 5px; padding: 6px; }
 .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
 .nav-overlay {
-  position: fixed; inset: 0; background: rgba(8,8,8,0.97); z-index: 99;
+  position: fixed; inset: 0; background: rgba(0,0,0,0.99); z-index: 99;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
   transform: translateX(100%); transition: transform 0.4s var(--ease-out);
 }
@@ -234,27 +234,28 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   color: #fff;
 }
 
-/* Hero glass slogan bar */
+/* Hero glass slogan bar — overlays TOP of hero photo */
 .hero-glass-bar {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 50px;
+  top: 64px; left: 0; right: 0;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.04);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-top: 1px solid rgba(255,255,255,0.1);
-  z-index: 2;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-top: 1px solid rgba(255,255,255,0.12);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  z-index: 3;
 }
 .hero-glass-bar span {
   font-family: var(--apple-font);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.55);
 }
 
 .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; opacity: 0; }
@@ -1201,12 +1202,12 @@ button { cursor: pointer; background: none; border: none; font: inherit; color: 
   padding: 8px 14px 10px;
 }
 .iphone-dock-inner {
-  display: flex; justify-content: space-around;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(24px);
+  display: flex; justify-content: space-evenly;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(30px);
   border-radius: 22px;
-  padding: 10px 6px;
-  gap: 8px;
+  padding: 10px 18px;
+  gap: 16px;
 }
 .iphone-dock-app .iphone-icon { width: 50px; height: 50px; }
 

@@ -309,6 +309,7 @@ function initIphone() {
           closeIphone();
           window.location.href = 'tel:+34631537136';
           break;
+        case 'messages':
         case 'whatsapp':
           closeIphone();
           window.open('https://wa.me/34631537136', '_blank');
